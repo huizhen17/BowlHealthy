@@ -20,4 +20,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void btnOnClick_Login(View view) {
     }
+
+    public void linkOnClick_forgetPw(View view) {
+    }
 }
