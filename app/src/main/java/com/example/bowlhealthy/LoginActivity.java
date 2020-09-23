@@ -13,6 +13,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
     }
 
+    //Hello by Ezra
+
     public void linkOnClick_signIn(View view) {
     }
 
