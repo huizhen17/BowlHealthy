@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBg">
+
+        <ImageView
+            android:layout_width="264dp"
+            android:layout_height="351dp"
+            android:src="@drawable/mainmenu_bg" />
+
+        <ImageView
+            android:id="@+id/iv_menu_bowl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/custombowl" />
+
+        <TextView
+            android:id="@+id/tv_bowl_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_menu_bowl"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="-5dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Custom Bowl"
+            android:textColor="@color/colorMenu"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_bowl_desc"
+            android:layout_width="213dp"
+            android:layout_height="93dp"
+            android:layout_below="@id/tv_bowl_title"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/roboto_light_italic"
+            android:text="Select Own Base, Toppings, Sauces,Proteins! Let's Create Your Own Bowl! "
+            android:textColor="@color/colorMenu"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+</RelativeLayout>

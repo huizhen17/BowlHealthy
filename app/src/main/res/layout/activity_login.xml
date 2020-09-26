@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_bg"
+    android:background="@drawable/bg_login"
     tools:context=".LoginActivity">
 
     <ImageView
@@ -32,7 +32,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
-            android:hint="Username"
+            android:id="@+id/loginEmail"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
             android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,6 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
+            android:id="@+id/loginPs"
             android:hint="Password"
             android:inputType="textPassword"
             android:textSize="18sp" />
@@ -71,12 +74,12 @@
         app:layout_constraintVertical_bias="0.938" />
 
     <TextView
-        android:id="@+id/signIn"
+        android:id="@+id/signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="SIGN IN"
-        android:onClick="linkOnClick_signIn"
+        android:text="SIGN UP"
+        android:onClick="linkOnClick_signUp"
         android:textColor="@color/colorPrimary"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -88,7 +91,7 @@
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="327dp"
+        android:layout_width="320dp"
         android:layout_height="47dp"
         android:background="@drawable/button_bg"
         android:fontFamily="sans-serif-black"
@@ -104,7 +107,7 @@
         app:layout_constraintVertical_bias="0.202" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/forgetPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_light_italic"

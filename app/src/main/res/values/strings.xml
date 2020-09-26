@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">BowlHealthy</string>
+    <string name="signuptnc">I agree with the <i>Terms of Services</i> and <i>Privacy Policy</i>.</string>
+    <string name="main_custom">Select Own Base, Toppings, Sauces,Proteins! Lets Create Your Own Bowl! </string>
+    <string name="main_poke">Originated In Hawaii. Traditionally They Contain Raw Fish, Rice And Vegetables. </string>
+    <string name="main_buddha">Originally These Bowls Were Vegan And So Contained No Animal Products.</string>
+    <string name="main_burrito">A Great Alternative To A Classic Burrito. </string>
+    <string name="main_smoothie">More Suited As A Breakfast Bowl And Contained Fruits, Nuts And Cereals.</string>
 </resources>
