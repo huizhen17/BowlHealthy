@@ -40,7 +40,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         holder.title.setText(mainModels.get(position).getTitle());
         holder.desc.setText(mainModels.get(position).getDesc());
 
-
     }
 
     @Override

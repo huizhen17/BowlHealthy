@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">BowlHealthy</string>
+    <string name="Open">Open</string>
+    <string name="Close">Close</string>
+    <string name="forgetps_maintext">Enter email address associated with your account.</string>
+    <string name="forgetps_mainsdesc">We will email you a link to reset your password.</string>
     <string name="signuptnc">I agree with the <i>Terms of Services</i> and <i>Privacy Policy</i>.</string>
     <string name="main_custom">Select Own Base, Toppings, Sauces,Proteins! Lets Create Your Own Bowl! </string>
     <string name="main_poke">Originated In Hawaii. Traditionally They Contain Raw Fish, Rice And Vegetables. </string>

@@ -16,22 +16,25 @@
             android:title="Order History"/>
     </group>
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_account"
-            android:title="My Account"/>
-        <item
-            android:id="@+id/nav_faq"
-            android:title="FAQ"/>
-        <item
-            android:id="@+id/nav_tnc"
-            android:title="Terms and Condition"/>
-    </group>
+    <item android:title="Profile">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_account"
+                    android:title="My Account" />
+                <item
+                    android:id="@+id/nav_faq"
+                    android:title="FAQ" />
+                <item
+                    android:id="@+id/nav_tnc"
+                    android:title="Terms and Condition" />
+            </group>
+        </menu>
+    </item>
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_logout"
             android:title="Log Out"/>
     </group>
-
 </menu>

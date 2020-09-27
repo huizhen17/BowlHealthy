@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -32,7 +33,6 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.loginPs);
     }
 
-    //Hello by Ezra
     @Override
     public void onStart() {
         super.onStart();
@@ -92,10 +92,10 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
 
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
     }
 
     public void linkOnClick_forgetPw(View view) {
+        Intent intent = new Intent(this,ForgetPassword.class);
+        startActivity(intent);
     }
 }
