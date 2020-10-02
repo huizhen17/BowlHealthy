@@ -12,8 +12,8 @@
         android:background="@color/colorBg">
 
         <ImageView
-            android:layout_width="264dp"
-            android:layout_height="351dp"
+            android:layout_width="277dp"
+            android:layout_height="302dp"
             android:src="@drawable/mainmenu_bg" />
 
         <ImageView

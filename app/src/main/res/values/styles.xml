@@ -8,4 +8,19 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="myacc_title">
+        <item name="android:layout_width">97dp</item>
+        <item name="android:layout_height">19dp</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/colorDesc</item>
+    </style>
+
+    <style name="myacc_desc">
+        <item name="android:layout_width">224dp</item>
+        <item name="android:layout_height">23dp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
 </resources>

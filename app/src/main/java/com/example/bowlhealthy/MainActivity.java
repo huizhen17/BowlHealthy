@@ -5,10 +5,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -24,17 +21,12 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
 
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore mFirestore = FirebaseFirestore.getInstance();
     String userID;
-    RecyclerView mRecyclerView;
-    ViewPager viewPager;
-    MainAdapter adapter;
-    ArrayList<MainMenuItem> models;
+
     TextView mtvUsername;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -43,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_home,new Fragment_Home()).commit();
 
         mtvUsername = findViewById(R.id.tvUsername); //username in menu header
         userID = mAuth.getCurrentUser().getUid();
@@ -67,30 +61,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(MainActivity.this);
         navigationView.setCheckedItem(R.id.nav_home);
 
-        //Swipe view for home banner
-        viewPager = findViewById(R.id.myViewPager);
-        ViewBannerAdapter viewBannerAdapter = new ViewBannerAdapter(this);
-        viewPager.setAdapter(viewBannerAdapter);
-
-        //Swipe view for home menu category
-        models = new ArrayList<>();
-        models.add(new MainMenuItem(R.drawable.custombowl,"Custom Bowl",R.string.main_custom));
-        models.add(new MainMenuItem(R.drawable.poke1,"Poke Bowl",R.string.main_poke));
-        models.add(new MainMenuItem(R.drawable.buddha1,"Buddha Bowl",R.string.main_buddha));
-        models.add(new MainMenuItem(R.drawable.burrito1,"Burrito Bowl",R.string.main_burrito));
-        models.add(new MainMenuItem(R.drawable.smoothie1,"Smoothie Bowl",R.string.main_smoothie));
-
-        mRecyclerView = findViewById(R.id.menuRecyclerView);
-
-        //Design Horizontal Layout
-        LinearLayoutManager layoutManager = new LinearLayoutManager(
-                MainActivity.this,LinearLayoutManager.HORIZONTAL,false);
-        mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-
-        //Set adapter for recycler view
-        adapter = new MainAdapter(MainActivity.this, models);
-        mRecyclerView.setAdapter(adapter);
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null) {
@@ -138,18 +108,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_home:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl_home,new Fragment_Home()).commit();
                 break;
             case R.id.nav_fav:
+                Toast.makeText(this,"My Favourite",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_cart:
+                Toast.makeText(this,"Shopping Carts",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_history:
+                Toast.makeText(this,"History",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_account:
+                Intent intent = new Intent(this,MyAccount .class);
+                startActivity(intent);
+                //getSupportFragmentManager().beginTransaction().replace(R.id.fl_home,new Fragment_MyAcc()).commit();
+                Toast.makeText(this,"My Account",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_faq:
+                Toast.makeText(this,"FAQ",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_tnc:
+                Toast.makeText(this,"Terms and Conditions",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_logout:
                 mAuth.signOut();
