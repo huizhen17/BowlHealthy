@@ -10,4 +10,6 @@
     <string name="main_buddha">Originally These Bowls Were Vegan And So Contained No Animal Products.</string>
     <string name="main_burrito">A Great Alternative To A Classic Burrito. </string>
     <string name="main_smoothie">More Suited As A Breakfast Bowl And Contained Fruits, Nuts And Cereals.</string>
+    <string name="myacc_passwordchange">Dear Sirs,\n\nYou have successfully changed your password.\nYou\'re getting this email to make sure it was you. If not, please contact us through our email on <u>example.lu123@gmail.com</u>.
+    \n\n\n Regard.</string>
 </resources>
