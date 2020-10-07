@@ -10,8 +10,8 @@
     <string name="main_buddha">Originally These Bowls Were Vegan And So Contained No Animal Products.</string>
     <string name="main_burrito">A Great Alternative To A Classic Burrito. </string>
     <string name="main_smoothie">More Suited As A Breakfast Bowl And Contained Fruits, Nuts And Cereals.</string>
-    <string name="myacc_passwordchange">Dear Sirs,\n\nYou have successfully changed your password.\nYou\'re getting this email to make sure it was you. If not, please contact us through our email on <u>example.lu123@gmail.com</u>.
-    \n\n\n Regard.</string>
+    <string name="myacc_passwordchange">Dear Sirs,\n\nGood Day.\n\n\nYou have successfully changed your password.\nYou\'re getting this email to make sure it was you. If not, please contact us through our email on <u>example.lu123@gmail.com</u>.
+    \n\nThis is a system generated email. Please do not reply to it. \n\n Regard.</string>
 
     <string name="poke1Name">Signature Salmon\nPoke Bowl</string>
     <string name="poke2Name">Signature Tuna\nPoke Bowl</string>
@@ -30,5 +30,56 @@
     <string name="poke3Desc">Top salad with tuna, edamame, ginger, shallot and sesame seeds. Drizzle with remaining marinade to serve.</string>
     <string name="poke4Desc">Topped rice with avocado, crunchy veg, seaweed and marinated salmon, creating a fresh dish that’ll bowl your guests over.</string>
     <string name="poke5Desc"> This delicious shrimp, mango salsa, and avocado goodness has two full servings of veggies, too.</string>
+
+    <string name="burrito1Name">Potato Black Bean\nBurrito Bowl</string>
+    <string name="burrito2Name">Chicken Shawarma\nQuinoa Bowl</string>
+    <string name="burrito3Name">Roasted Chickpea\nTaco Bowl</string>
+    <string name="burrito4Name">Mediterranean\nQuinoa Bowl</string>
+    <string name="burrito5Name">Veggie Burrito\nBowl</string>
+
+    <string name="burrito1Ing">black bean, lemon, brown rice,sweet potato, avocado</string>
+    <string name="burrito2Ing">naan, fresh veggie, cherrytomato,cucumber, quinoa</string>
+    <string name="burrito3Ing">chickpea, quinoa, salsa, black bean, avocado</string>
+    <string name="burrito4Ing">cucumber, tomato, chickpea, hummus, tzatziki, avocado, quinoa</string>
+    <string name="burrito5Ing">mexicancan rice, avocadguacamole,spinach, corns</string>
+
+    <string name="burrito1Desc">Delicious cilantro lime rice piled high with black beans, roasted sweet potatoes, and vegetables.</string>
+    <string name="burrito2Desc">Tender, juicy chicken spiced and tossed with fluffy quinoa, fresh veggies, warm naan and a creamy tahini sauce.</string>
+    <string name="burrito3Desc">Loaded with zesty cilantro lime quinoa, taco roasted chickpeas, salsa, black beans, and avocado.</string>
+    <string name="burrito4Desc">Cucumbers, tomatoes, chickpeas, hummus, tzatziki, avocado, quinoa and more come together in a sensational.</string>
+    <string name="burrito5Desc">Mexican Rice,Quick Simmered Black Beans, Guacamole avocado, chopped Green Leaf Lettuce and Pico de Gallo.</string>
+
+    <string name="buddha1Name">Black Rice Salad\n Buddha Bowl</string>
+    <string name="buddha2Name">Mediterranean\nBuddha Bowl</string>
+    <string name="buddha3Name">Potato Chickpea\nBuddha Bowl</string>
+    <string name="buddha4Name">Tahini Miso\nBuddha Bowl</string>
+    <string name="buddha5Name">Nourishing\nBuddha Bowl</string>
+
+    <string name="buddha1Ing">black rice, cucumber, tomato, potato, carrot, salad veggie</string>
+    <string name="buddha2Ing">brown rice, corn, salad veggie, sweet potato, quinoa </string>
+    <string name="buddha3Ing">chickpea, sweet potato, carrots, avocado, salad veggies  </string>
+    <string name="buddha4Ing">miso, red pepper, kimchi, tofu, brown rice, sesame seeds</string>
+    <string name="buddha5Ing">chickpea, baby spinach, red cabbages, avocado, salad veggies</string>
+
+    <string name="buddha1Desc">Top this superfood with chopped beets, carrots, cucumber, and homemade tahini dressing to take it all home.</string>
+    <string name="buddha2Desc">Packed with vegetables, chickpeas, quinoa and topped with a Thyme Balsamic Vinaigrette, it\'s satisfying and delicious!</string>
+    <string name="buddha3Desc">Special top for rainbow coloured veg, garlic infused brown rice plus a light and creamy dressing.</string>
+    <string name="buddha4Desc">This one consists of sweet potato, crispy fried chickpeas, rice, lettuce, carrot, cucumber and avocado.</string>
+    <string name="buddha5Desc">Some roasted potatoes, chickpeas, fresh vegetables and seeds, combined all together in one single bowl.</string>
+
+    <string name="smoothie1Name">Cacao Smoothie</string>
+    <string name="smoothie2Name">Avocado Smoothie</string>
+    <string name="smoothie3Name">Mango Smoothie</string>
+    <string name="smoothie4Name">Berry Smoothie</string>
+
+    <string name="smoothie1Ing">berries, cacao, strawberry, chia seeds, nuts</string>
+    <string name="smoothie2Ing">avocado, banana, kiwi, kale, frozen pineapple</string>
+    <string name="smoothie3Ing">mango, almond milk, berries, almond, shredded coconut</string>
+    <string name="smoothie4Ing">strawberry, kiwi, berries, chia seeds, oats</string>
+
+    <string name="smoothie1Desc">Top it off with favorite fruit, nuts, and seeds and gives a light and airy texture similar to chocolate mousse.</string>
+    <string name="smoothie2Desc">Top both smoothie bowls with kiwi and banana slices, chia and pumpkin seeds, and a drizzle of honey. </string>
+    <string name="smoothie3Desc">Delicious And Healthy Mango Smoothie Bowl Topped With Raisins, Berries, Shredded Coconut And Sliced Almonds!</string>
+    <string name="smoothie4Desc">This bowl is packed with protein from the yogurt, protein powder, flax, chia seeds and oats.</string>
 
 </resources>
