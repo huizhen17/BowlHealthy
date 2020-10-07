@@ -12,4 +12,23 @@
     <string name="main_smoothie">More Suited As A Breakfast Bowl And Contained Fruits, Nuts And Cereals.</string>
     <string name="myacc_passwordchange">Dear Sirs,\n\nYou have successfully changed your password.\nYou\'re getting this email to make sure it was you. If not, please contact us through our email on <u>example.lu123@gmail.com</u>.
     \n\n\n Regard.</string>
+
+    <string name="poke1Name">Signature Salmon\nPoke Bowl</string>
+    <string name="poke2Name">Signature Tuna\nPoke Bowl</string>
+    <string name="poke3Name">Ahi Poke Bowl</string>
+    <string name="poke4Name">Avocado Salmon\nPoke Bowl</string>
+    <string name="poke5Name">Shrimp Poke Bowl</string>
+
+    <string name="poke1Ing">salmon, chilli, carrot,\ncucumber, sushi rice</string>
+    <string name="poke2Ing">tuna, peas, carrot,\ncucumber, sushi rice</string>
+    <string name="poke3Ing">tuna, avocado, carrot, peas, cucumber, sushi rice</string>
+    <string name="poke4Ing">salmon, cabbage, carrot, cucumber, sushi rice</string>
+    <string name="poke5Ing">shrimp, avocado, mango, vegie, salad vegie, sushi rice</string>
+
+    <string name="poke1Desc">Cook the sushi rice and make the yuzu dressing, combine all dressing ingredients in a screw-top jar.</string>
+    <string name="poke2Desc">Whisk together soy sauce, rice vinegar, sesame oil, ginger, red pepper flakes, green onions, and sesame seeds. </string>
+    <string name="poke3Desc">Top salad with tuna, edamame, ginger, shallot and sesame seeds. Drizzle with remaining marinade to serve.</string>
+    <string name="poke4Desc">Topped rice with avocado, crunchy veg, seaweed and marinated salmon, creating a fresh dish that’ll bowl your guests over.</string>
+    <string name="poke5Desc"> This delicious shrimp, mango salsa, and avocado goodness has two full servings of veggies, too.</string>
+
 </resources>

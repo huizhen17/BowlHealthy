@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         mtvUsername = findViewById(R.id.tvUsername); //username in menu header
         userID = mAuth.getCurrentUser().getUid();
-        Toast.makeText(this,"Hello!!!!!!!",Toast.LENGTH_SHORT).show();
 
         //Set up drawer navigation
         drawerLayout = findViewById(R.id.drawer_layout);

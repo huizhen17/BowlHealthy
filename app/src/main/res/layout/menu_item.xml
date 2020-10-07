@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/rlMenu"
+    android:orientation="vertical"
+    android:background="@color/colorBg">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="201dp"
+            android:layout_height="233dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.952"
+            app:srcCompat="@drawable/menu_bg" />
+
+        <ImageView
+            android:id="@+id/ivBowl"
+            android:layout_width="137dp"
+            android:layout_height="123dp"
+            android:layout_alignEnd="@+id/imageView12"
+            android:layout_alignParentStart="true"
+            android:adjustViewBounds="true"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView12"
+            app:layout_constraintEnd_toEndOf="@+id/imageView12"
+            app:layout_constraintHorizontal_bias="0.35"
+            app:layout_constraintStart_toStartOf="@+id/imageView12"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/poke1" />
+
+        <TextView
+            android:id="@+id/tvMenuIng"
+            android:layout_width="156dp"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/ivBowl"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_italic"
+            android:gravity="center"
+            android:text="salmon, chilli, carrot,\ncucumber, sushi rice"
+            android:textColor="@color/colorMenu"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView12"
+            app:layout_constraintEnd_toEndOf="@+id/tvmenuTitle"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvmenuTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvmenuTitle"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvmenuTitle"
+            android:layout_width="155dp"
+            android:layout_height="45dp"
+            android:layout_alignEnd="@+id/ivBowl"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:text="Signature Salmon\nPoke Bowl"
+            android:textColor="@color/colorMenu"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView12"
+            app:layout_constraintEnd_toEndOf="@+id/ivBowl"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="@+id/ivBowl"
+            app:layout_constraintTop_toBottomOf="@+id/ivBowl"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/imageView14"
+            android:layout_width="19dp"
+            android:layout_height="22dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView12"
+            app:layout_constraintEnd_toEndOf="@+id/tvMenuIng"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvMenuIng"
+            app:layout_constraintTop_toBottomOf="@+id/tvMenuIng"
+            app:layout_constraintVertical_bias="0.351"
+            app:srcCompat="@drawable/clock" />
+
+        <TextView
+            android:id="@+id/tvMins"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="15"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView14"
+            app:layout_constraintEnd_toEndOf="@+id/imageView12"
+            app:layout_constraintHorizontal_bias="0.035"
+            app:layout_constraintStart_toEndOf="@+id/imageView14"
+            app:layout_constraintTop_toTopOf="@+id/imageView14"
+            app:layout_constraintVertical_bias="0.41000003" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:fontFamily="@font/roboto_bold_italic"
+            android:text="mins"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvMins"
+            app:layout_constraintEnd_toEndOf="@+id/imageView12"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tvMins"
+            app:layout_constraintTop_toTopOf="@+id/tvMins"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvPrice"
+            android:layout_width="50dp"
+            android:layout_height="23dp"
+            android:layout_marginStart="4dp"
+            android:fontFamily="sans-serif-black"
+            android:text="13.50"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView24"
+            app:layout_constraintEnd_toEndOf="@+id/imageView12"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textView24"
+            app:layout_constraintTop_toTopOf="@+id/textView24"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="RM"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView23"
+            app:layout_constraintEnd_toEndOf="@+id/imageView12"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toEndOf="@+id/textView23"
+            app:layout_constraintTop_toTopOf="@+id/textView23"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

@@ -27,7 +27,6 @@ public class Fragment_Home extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home,container,false);
-        Toast.makeText(getActivity(),"Home Page",Toast.LENGTH_SHORT).show();
 
         //Swipe view for home banner
         viewPager = v.findViewById(R.id.myViewPager);
