@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "607053068286",
+    "firebase_url": "https://bowl-healthiness.firebaseio.com",
+    "project_id": "bowl-healthiness",
+    "storage_bucket": "bowl-healthiness.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607053068286:android:362554220d51c55cdf72af",
+        "android_client_info": {
+          "package_name": "com.example.bowlhealthy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "607053068286-2drcqrmifcf7e31ps4dt1ph6tsfohm2k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bowlhealthy",
+            "certificate_hash": "84428f0e5c4c98fd763db25d022fe8642b83c0ca"
+          }
+        },
+        {
+          "client_id": "607053068286-8eia0gik1ik1care8i0u6046d9gvcpjj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDx6ybZ7ek35hQTeKMj1W_vx41Jb_FNq4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "607053068286-8eia0gik1ik1care8i0u6046d9gvcpjj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
