@@ -13,10 +13,10 @@
     <string name="myacc_passwordchange">Dear Sirs,\n\nGood Day.\n\n\nYou have successfully changed your password.\nYou\'re getting this email to make sure it was you. If not, please contact us through our email on <u>example.lu123@gmail.com</u>.
     \n\nThis is a system generated email. Please do not reply to it. \n\n Regard.</string>
 
-    <string name="poke1Name">Signature Salmon\nPoke Bowl</string>
-    <string name="poke2Name">Signature Tuna\nPoke Bowl</string>
+    <string name="poke1Name">Signature Salmon Poke Bowl</string>
+    <string name="poke2Name">Signature Tuna Poke Bowl</string>
     <string name="poke3Name">Ahi Poke Bowl</string>
-    <string name="poke4Name">Avocado Salmon\nPoke Bowl</string>
+    <string name="poke4Name">Avocado Salmon Poke Bowl</string>
     <string name="poke5Name">Shrimp Poke Bowl</string>
 
     <string name="poke1Ing">salmon, chilli, carrot,\ncucumber, sushi rice</string>
@@ -31,11 +31,11 @@
     <string name="poke4Desc">Topped rice with avocado, crunchy veg, seaweed and marinated salmon, creating a fresh dish that’ll bowl your guests over.</string>
     <string name="poke5Desc"> This delicious shrimp, mango salsa, and avocado goodness has two full servings of veggies, too.</string>
 
-    <string name="burrito1Name">Potato Black Bean\nBurrito Bowl</string>
-    <string name="burrito2Name">Chicken Shawarma\nQuinoa Bowl</string>
-    <string name="burrito3Name">Roasted Chickpea\nTaco Bowl</string>
-    <string name="burrito4Name">Mediterranean\nQuinoa Bowl</string>
-    <string name="burrito5Name">Veggie Burrito\nBowl</string>
+    <string name="burrito1Name">Potato Black Bean Burrito Bowl</string>
+    <string name="burrito2Name">Chicken Shawarma Quinoa Bowl</string>
+    <string name="burrito3Name">Roasted Chickpea Taco Bowl</string>
+    <string name="burrito4Name">Mediterranean Quinoa Bowl</string>
+    <string name="burrito5Name">Veggie Burrito Bowl</string>
 
     <string name="burrito1Ing">black bean, lemon, brown rice,sweet potato, avocado</string>
     <string name="burrito2Ing">naan, fresh veggie, cherrytomato,cucumber, quinoa</string>
@@ -49,11 +49,11 @@
     <string name="burrito4Desc">Cucumbers, tomatoes, chickpeas, hummus, tzatziki, avocado, quinoa and more come together in a sensational.</string>
     <string name="burrito5Desc">Mexican Rice,Quick Simmered Black Beans, Guacamole avocado, chopped Green Leaf Lettuce and Pico de Gallo.</string>
 
-    <string name="buddha1Name">Black Rice Salad\n Buddha Bowl</string>
-    <string name="buddha2Name">Mediterranean\nBuddha Bowl</string>
-    <string name="buddha3Name">Potato Chickpea\nBuddha Bowl</string>
-    <string name="buddha4Name">Tahini Miso\nBuddha Bowl</string>
-    <string name="buddha5Name">Nourishing\nBuddha Bowl</string>
+    <string name="buddha1Name">Black Rice Salad Buddha Bowl</string>
+    <string name="buddha2Name">Mediterranean Buddha Bowl</string>
+    <string name="buddha3Name">Potato Chickpea Buddha Bowl</string>
+    <string name="buddha4Name">Tahini Miso Buddha Bowl</string>
+    <string name="buddha5Name">Nourishing Buddha Bowl</string>
 
     <string name="buddha1Ing">black rice, cucumber, tomato, potato, carrot, salad veggie</string>
     <string name="buddha2Ing">brown rice, corn, salad veggie, sweet potato, quinoa </string>

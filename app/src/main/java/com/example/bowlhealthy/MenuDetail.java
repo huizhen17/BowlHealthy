@@ -7,17 +7,9 @@ public class MenuDetail {
     private int ingredient;
     private String price;
     private String time;
-    private float calories;
+    private String calories;
 
-    public MenuDetail(int menuImg,int menuName,int ingredient, String price, String time) {
-        this.menuImg = menuImg;
-        this.menuName = menuName;
-        this.ingredient = ingredient;
-        this.price = price;
-        this.time = time;
-    }
-
-    public MenuDetail(int menuImg,int menuName, int menuDesc, int ingredient, String price, String time, float calories) {
+    public MenuDetail(int menuImg,int menuName, int ingredient, int menuDesc, String price, String time, String calories) {
         this.menuImg = menuImg;
         this.menuName = menuName;
         this.menuDesc = menuDesc;
@@ -75,11 +67,11 @@ public class MenuDetail {
         this.time = time;
     }
 
-    public float getCalories() {
+    public String getCalories() {
         return calories;
     }
 
-    public void setCalories(float calories) {
+    public void setCalories(String calories) {
         this.calories = calories;
     }
 }

@@ -32,6 +32,8 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
         TextView title;
         TextView ingredient;
         TextView duration;
+        TextView description;
+        TextView calories;
         TextView price;
         RelativeLayout relativeLayout;
 
@@ -61,17 +63,23 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
         holder.ingredient.setText(menuDetails.get(position).getIngredient());
         holder.duration.setText(menuDetails.get(position).getTime());
         holder.price.setText(menuDetails.get(position).getPrice());
+        //holder.calories.setText(menuDetails.get(position).getCalories());
+        //holder.description.setText(menuDetails.get(position).getMenuDesc());
 
         //Set onclick listener
-
-        /*holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context,SingleMenu.class);
+                intent.putExtra("image",menuDetails.get(position).getMenuImg());
                 intent.putExtra("title",menuDetails.get(position).getMenuName());
+                intent.putExtra("time",menuDetails.get(position).getTime());
+                intent.putExtra("calories",menuDetails.get(position).getCalories());
+                intent.putExtra("desc",menuDetails.get(position).getMenuDesc());
+                intent.putExtra("price",menuDetails.get(position).getPrice());
                 context.startActivity(intent);
             }
-        });*/
+        });
 
     }
 
