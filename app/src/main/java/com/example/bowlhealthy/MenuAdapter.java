@@ -6,23 +6,31 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
+public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> implements Filterable {
 
     ArrayList<MenuDetail> menuDetails;
+    ArrayList<MenuDetail> menuDetailsFull;
     Context context;
 
     public MenuAdapter(Context context,ArrayList<MenuDetail> menuDetails){
         this.context = context;
         this.menuDetails = menuDetails;
+        //take a copy of menu Details
+        menuDetailsFull = new ArrayList<>(menuDetails);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -32,8 +40,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
         TextView title;
         TextView ingredient;
         TextView duration;
-        TextView description;
-        TextView calories;
         TextView price;
         RelativeLayout relativeLayout;
 
@@ -63,8 +69,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
         holder.ingredient.setText(menuDetails.get(position).getIngredient());
         holder.duration.setText(menuDetails.get(position).getTime());
         holder.price.setText(menuDetails.get(position).getPrice());
-        //holder.calories.setText(menuDetails.get(position).getCalories());
-        //holder.description.setText(menuDetails.get(position).getMenuDesc());
 
         //Set onclick listener
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
@@ -89,4 +93,40 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
     }
 
 
+    @Override
+    public Filter getFilter() {
+        return exampleFilter;
+    }
+
+    public Filter exampleFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            ArrayList<MenuDetail> filterList = new ArrayList<>();
+
+            if(charSequence == null || charSequence.length()==0){
+                Toast.makeText(context,"Hello",Toast.LENGTH_SHORT).show();
+                filterList.addAll(menuDetailsFull);
+            }
+            else{
+                Toast.makeText(context,"Hello123",Toast.LENGTH_SHORT).show();
+                String filterPattern = charSequence.toString().toLowerCase().trim();
+                for(MenuDetail detail : menuDetailsFull){
+                    if (detail.getMenuName().toLowerCase().contains(filterPattern)){
+                        filterList.add(detail);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filterList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            menuDetails.clear();
+            menuDetails.addAll((Collection<? extends MenuDetail>) filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
 }

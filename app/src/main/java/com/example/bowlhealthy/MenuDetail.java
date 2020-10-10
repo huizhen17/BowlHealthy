@@ -2,14 +2,14 @@ package com.example.bowlhealthy;
 
 public class MenuDetail {
     private int menuImg;
-    private int menuName;
+    private String menuName;
     private int menuDesc;
     private int ingredient;
     private String price;
     private String time;
     private String calories;
 
-    public MenuDetail(int menuImg,int menuName, int ingredient, int menuDesc, String price, String time, String calories) {
+    public MenuDetail(int menuImg,String menuName, int ingredient, int menuDesc, String price, String time, String calories) {
         this.menuImg = menuImg;
         this.menuName = menuName;
         this.menuDesc = menuDesc;
@@ -27,11 +27,11 @@ public class MenuDetail {
         this.menuImg = menuImg;
     }
 
-    public int getMenuName() {
+    public String getMenuName() {
         return menuName;
     }
 
-    public void setMenuName(int menuName) {
+    public void setMenuName(String menuName) {
         this.menuName = menuName;
     }
 

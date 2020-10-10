@@ -10,12 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SingleMenu"></activity>
-        <activity android:name=".MenuActivity" />
+        <activity android:name=".MenuActivity" android:windowSoftInputMode="adjustPan" />
         <activity android:name=".CheckOut" />
         <activity android:name=".OrderHistory" />
         <activity android:name=".MyCart" />
         <activity android:name=".MyFavourite" />
-        <activity android:name=".SearchActivity" />
         <activity android:name=".MyAccount" />
         <activity android:name=".ForgetPassword" />
         <activity android:name=".SignUp" />

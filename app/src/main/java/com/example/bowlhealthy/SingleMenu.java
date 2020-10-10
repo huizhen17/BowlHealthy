@@ -14,8 +14,8 @@ public class SingleMenu extends AppCompatActivity {
     ImageView mivImage;
     TextView mtvName,mtvDesc,mtvPrice;
     TextView mtvDuration, mtvCal;
-    int image,name,desc;
-    String textPrice, textDuration, textCal;
+    int image,desc;
+    String name,textPrice, textDuration, textCal;
     float price, duration, cal;
 
     @Override
@@ -32,7 +32,7 @@ public class SingleMenu extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         image = bundle.getInt("image");
-        name = bundle.getInt("title");
+        name = bundle.getString("title");
         desc = bundle.getInt("desc");
         textPrice = bundle.getString("price");
         textDuration = bundle.getString("time");

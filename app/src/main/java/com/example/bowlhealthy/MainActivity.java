@@ -65,17 +65,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(currentUser != null) {
             DocumentReference documentReference = mFirestore.collection("userDetail").document(userID);
 
-            /*documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-                @Override
-                public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
-                    mtvGreetingName.setText(documentSnapshot.getString("name"));
-                    View headerView = navigationView.getHeaderView(0);
-                    TextView navUsername = (TextView) headerView.findViewById(R.id.tv_username);
-                    navUsername.setText(documentSnapshot.getString("name"));
-                }
-            });
-             */
-
             documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {

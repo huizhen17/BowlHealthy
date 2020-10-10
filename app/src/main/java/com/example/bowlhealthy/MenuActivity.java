@@ -1,10 +1,15 @@
 package com.example.bowlhealthy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -24,47 +29,42 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        //Set scroll view focus up
-        /*((ScrollView) findViewById(R.id.scrollView)).post(new Runnable() {
-            public void run() {
-                ((ScrollView) findViewById(R.id.scrollView)).fullScroll(View.FOCUS_UP);
-            }
-        });*/
-
         mMenuType = findViewById(R.id.tvMenuType);
+
+        //Get passing menu type and display it
         Bundle bundle = getIntent().getExtras();
-        type = bundle.getString("title");//base on the title get thn if(title.equal("Poke Bowl")) show list
+        type = bundle.getString("title");
         mMenuType.setText(type);
 
         menuList = new ArrayList<>();
 
         if(type.equalsIgnoreCase("Poke Bowl")){
             //Swipe view for home menu category
-            menuList.add(new MenuDetail(R.drawable.poke1,R.string.poke1Name,R.string.poke1Ing,R.string.poke1Desc,"13.50", "20","650"));
-            menuList.add(new MenuDetail(R.drawable.poke2,R.string.poke2Name,R.string.poke2Ing,R.string.poke2Desc, "13.50","20","640"));
-            menuList.add(new MenuDetail(R.drawable.poke3,R.string.poke3Name,R.string.poke3Ing,R.string.poke3Desc, "12.50","15","660"));
-            menuList.add(new MenuDetail(R.drawable.poke4,R.string.poke4Name,R.string.poke4Ing,R.string.poke4Desc, "12.50","15","639"));
-            menuList.add(new MenuDetail(R.drawable.poke5,R.string.poke5Name,R.string.poke5Ing,R.string.poke5Desc, "12.50","15","639"));
+            menuList.add(new MenuDetail(R.drawable.poke1,"Signature Salmon Poke Bowl",R.string.poke1Ing,R.string.poke1Desc,"13.50", "20","650"));
+            menuList.add(new MenuDetail(R.drawable.poke2,"Signature Tuna Poke Bowl",R.string.poke2Ing,R.string.poke2Desc, "13.50","20","640"));
+            menuList.add(new MenuDetail(R.drawable.poke3,"Ahi Poke Bowl",R.string.poke3Ing,R.string.poke3Desc, "12.50","15","660"));
+            menuList.add(new MenuDetail(R.drawable.poke4,"Avocado Salmon Poke Bowl",R.string.poke4Ing,R.string.poke4Desc, "12.50","15","639"));
+            menuList.add(new MenuDetail(R.drawable.poke5,"Shrimp Poke Bowl",R.string.poke5Ing,R.string.poke5Desc, "12.50","15","639"));
         }
         else if(type.equalsIgnoreCase("Buddha Bowl")){
-            menuList.add(new MenuDetail(R.drawable.buddha1,R.string.buddha1Name,R.string.buddha1Ing,R.string.buddha1Desc, "12.50","15","439"));
-            menuList.add(new MenuDetail(R.drawable.buddha2,R.string.buddha2Name,R.string.buddha2Ing,R.string.buddha2Desc, "12.50","15","550"));
-            menuList.add(new MenuDetail(R.drawable.buddha3,R.string.buddha3Name,R.string.buddha3Ing,R.string.buddha3Desc, "12.50","15","437"));
-            menuList.add(new MenuDetail(R.drawable.buddha4,R.string.buddha4Name,R.string.buddha4Ing,R.string.buddha4Desc, "11.50","15","487"));
-            menuList.add(new MenuDetail(R.drawable.buddha5,R.string.buddha5Name,R.string.buddha5Ing,R.string.buddha5Desc, "11.50","15","539"));
+            menuList.add(new MenuDetail(R.drawable.buddha1,"Black Rice Salad Buddha Bowl",R.string.buddha1Ing,R.string.buddha1Desc, "12.50","15","439"));
+            menuList.add(new MenuDetail(R.drawable.buddha2,"Mediterranean Buddha Bowl",R.string.buddha2Ing,R.string.buddha2Desc, "12.50","15","550"));
+            menuList.add(new MenuDetail(R.drawable.buddha3,"Potato Chickpea Buddha Bowl",R.string.buddha3Ing,R.string.buddha3Desc, "12.50","15","437"));
+            menuList.add(new MenuDetail(R.drawable.buddha4,"Tahini Miso Buddha Bowl",R.string.buddha4Ing,R.string.buddha4Desc, "11.50","15","487"));
+            menuList.add(new MenuDetail(R.drawable.buddha5,"Nourishing Buddha Bowl",R.string.buddha5Ing,R.string.buddha5Desc, "11.50","15","539"));
         }
         else if (type.equalsIgnoreCase("Burrito Bowl")){
-            menuList.add(new MenuDetail(R.drawable.burrito1,R.string.burrito1Name,R.string.burrito1Ing,R.string.burrito1Desc, "12.50","15","440"));
-            menuList.add(new MenuDetail(R.drawable.burrito2,R.string.burrito2Name,R.string.burrito2Ing,R.string.burrito2Desc,  "12.50","15","580"));
-            menuList.add(new MenuDetail(R.drawable.burrito3,R.string.burrito3Name,R.string.burrito3Ing,R.string.burrito3Desc,  "12.00","15","555"));
-            menuList.add(new MenuDetail(R.drawable.burrito4,R.string.burrito4Name,R.string.burrito4Ing,R.string.burrito4Desc,  "12.00","15","450"));
-            menuList.add(new MenuDetail(R.drawable.burrito5,R.string.burrito5Name,R.string.burrito5Ing,R.string.burrito5Desc,  "12.00","15","439"));
+            menuList.add(new MenuDetail(R.drawable.burrito1,"Potato Black Bean Burrito Bowl",R.string.burrito1Ing,R.string.burrito1Desc, "12.50","15","440"));
+            menuList.add(new MenuDetail(R.drawable.burrito2,"Chicken Shawarma Quinoa Bowl",R.string.burrito2Ing,R.string.burrito2Desc,  "12.50","15","580"));
+            menuList.add(new MenuDetail(R.drawable.burrito3,"Roasted Chickpea Taco Bowl",R.string.burrito3Ing,R.string.burrito3Desc,  "12.00","15","555"));
+            menuList.add(new MenuDetail(R.drawable.burrito4,"Mediterranean Quinoa Bowl",R.string.burrito4Ing,R.string.burrito4Desc,  "12.00","15","450"));
+            menuList.add(new MenuDetail(R.drawable.burrito5,"Veggie Burrito Bowl",R.string.burrito5Ing,R.string.burrito5Desc,  "12.00","15","439"));
         }
         else if(type.equalsIgnoreCase("Smoothie Bowl")){
-            menuList.add(new MenuDetail(R.drawable.smoothie1,R.string.smoothie1Name,R.string.smoothie1Ing,R.string.smoothie1Desc,"10.50","15","328"));
-            menuList.add(new MenuDetail(R.drawable.smoothie2,R.string.smoothie2Name,R.string.smoothie2Ing,R.string.smoothie2Desc, "10.50","15","320"));
-            menuList.add(new MenuDetail(R.drawable.smoothie3,R.string.smoothie3Name,R.string.smoothie3Ing,R.string.smoothie3Desc, "10.50","15","340"));
-            menuList.add(new MenuDetail(R.drawable.smoothie4,R.string.smoothie4Name,R.string.smoothie4Ing,R.string.smoothie4Desc, "10.50","15","380"));
+            menuList.add(new MenuDetail(R.drawable.smoothie1,"Cacao Smoothie",R.string.smoothie1Ing,R.string.smoothie1Desc,"10.50","15","328"));
+            menuList.add(new MenuDetail(R.drawable.smoothie2,"Avocado Smoothie",R.string.smoothie2Ing,R.string.smoothie2Desc, "10.50","15","320"));
+            menuList.add(new MenuDetail(R.drawable.smoothie3,"Mango Smoothie",R.string.smoothie3Ing,R.string.smoothie3Desc, "10.50","15","340"));
+            menuList.add(new MenuDetail(R.drawable.smoothie4,"Berry Smoothie",R.string.smoothie4Ing,R.string.smoothie4Desc, "10.50","15","380"));
         }
 
         //set up recycler view
@@ -74,12 +74,25 @@ public class MenuActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(menuAdapter);
 
+        SearchView searchView = findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                menuAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
     }
 
     public void btnOnClick_back(View view) {
         super.onBackPressed();
     }
 
-    public void btnOnClick_search(View view) {
+    public void fabOnClick_cart(View view) {
     }
 }
