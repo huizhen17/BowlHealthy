@@ -74,6 +74,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> im
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //From menu to single menu page
                 Intent intent = new Intent(context,SingleMenu.class);
                 intent.putExtra("image",menuDetails.get(position).getMenuImg());
                 intent.putExtra("title",menuDetails.get(position).getMenuName());
@@ -92,7 +93,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> im
         return menuDetails.size();
     }
 
-
     @Override
     public Filter getFilter() {
         return exampleFilter;
@@ -104,11 +104,9 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> im
             ArrayList<MenuDetail> filterList = new ArrayList<>();
 
             if(charSequence == null || charSequence.length()==0){
-                Toast.makeText(context,"Hello",Toast.LENGTH_SHORT).show();
                 filterList.addAll(menuDetailsFull);
             }
             else{
-                Toast.makeText(context,"Hello123",Toast.LENGTH_SHORT).show();
                 String filterPattern = charSequence.toString().toLowerCase().trim();
                 for(MenuDetail detail : menuDetailsFull){
                     if (detail.getMenuName().toLowerCase().contains(filterPattern)){

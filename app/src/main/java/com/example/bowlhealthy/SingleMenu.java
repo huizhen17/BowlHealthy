@@ -2,12 +2,15 @@ package com.example.bowlhealthy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class SingleMenu extends AppCompatActivity {
 
@@ -60,5 +63,17 @@ public class SingleMenu extends AppCompatActivity {
     }
 
     public void btnOnClick_shareItem(View view) {
+    }
+
+    public void ivOnClick_Favourite(View view) {
+        Toast.makeText(SingleMenu.this,"This menu is saved.",Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this,MyFavourite.class);
+        intent.putExtra("image",image);
+        intent.putExtra("name",name);
+        intent.putExtra("price",textPrice);
+        intent.putExtra("duration",textDuration);
+        intent.putExtra("calories",textCal);
+        intent.putExtra("desc",desc);
+        startActivity(intent);
     }
 }

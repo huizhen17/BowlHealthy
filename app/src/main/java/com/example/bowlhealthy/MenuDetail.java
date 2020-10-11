@@ -19,6 +19,16 @@ public class MenuDetail {
         this.calories = calories;
     }
 
+    public MenuDetail(int menuImg,String menuName, int menuDesc, String price, String time, String calories) {
+        this.menuImg = menuImg;
+        this.menuName = menuName;
+        this.menuDesc = menuDesc;
+        this.price = price;
+        this.time = time;
+        this.calories = calories;
+    }
+
+
     public int getMenuImg() {
         return menuImg;
     }

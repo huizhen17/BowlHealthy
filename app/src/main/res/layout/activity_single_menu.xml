@@ -62,6 +62,7 @@
     <ImageView
         android:id="@+id/ivFav"
         android:layout_width="47dp"
+        android:onClick="ivOnClick_Favourite"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
