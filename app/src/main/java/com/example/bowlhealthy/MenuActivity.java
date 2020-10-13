@@ -95,4 +95,5 @@ public class MenuActivity extends AppCompatActivity {
 
     public void fabOnClick_cart(View view) {
     }
+
 }

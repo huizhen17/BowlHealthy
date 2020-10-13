@@ -99,7 +99,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fl_home,new Fragment_Home()).commit();
                 break;
             case R.id.nav_fav:
-                Toast.makeText(this,"My Favourite",Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this,MyFavourite.class);
+                startActivity(i);
                 break;
             case R.id.nav_cart:
                 Toast.makeText(this,"Shopping Carts",Toast.LENGTH_SHORT).show();

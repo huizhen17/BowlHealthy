@@ -58,8 +58,6 @@ public class MyAccount extends AppCompatActivity {
         mtvPhone = findViewById(R.id.tvPassword);
         mtvPass = findViewById(R.id.tvPassword);
         btnEdit = findViewById(R.id.btnEdit);
-
-        //Means i wan run in this activity, the this will pass the context to the system (like address or sth la
         loadingDialog = new Dialog(this);
 
         userID = mAuth.getCurrentUser().getUid();

@@ -11,6 +11,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
 
 import javax.xml.datatype.DatatypeFactory;
@@ -74,6 +84,8 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.ViewHolder> {
                 intent.putExtra("calories",favModels.get(position).getCalories());
                 intent.putExtra("desc",favModels.get(position).getMenuDesc());
                 intent.putExtra("price",favModels.get(position).getPrice());
+                intent.putExtra("from","FAV");
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 context.startActivity(intent);
             }
         });
@@ -81,11 +93,30 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.ViewHolder> {
         holder.ivFavIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                favModels.remove(position);
-                notifyDataSetChanged();
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                String userID = mAuth.getCurrentUser().getUid();
+                DocumentReference getMenuDB =  db.collection("userDetail").document(userID).collection("favDetail").document(favModels.get(position).getMenuName());
+                getMenuDB.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(context,"Item removed from your list.",Toast.LENGTH_SHORT).show();
+                        removeItem(position);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context,"Error. Please try again later.",Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
+    }
+
+    public void removeItem(int pos){
+        favModels.remove(pos);
+        notifyDataSetChanged();
     }
 
     @Override

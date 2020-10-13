@@ -1,5 +1,7 @@
 package com.example.bowlhealthy;
 
+import android.view.Menu;
+
 public class MenuDetail {
     private int menuImg;
     private String menuName;
@@ -27,6 +29,11 @@ public class MenuDetail {
         this.time = time;
         this.calories = calories;
     }
+
+    public MenuDetail() {
+        this(0,"",0,0,"","","");
+    }
+
 
 
     public int getMenuImg() {
