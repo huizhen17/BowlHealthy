@@ -34,9 +34,8 @@ public class SingleMenu extends AppCompatActivity {
     TextView mtvDuration, mtvCal;
     int image,desc;
     String name,textPrice, textDuration, textCal,menuID,userID;
-    float price, duration, cal;
     Boolean saved = false;
-    String from;
+    String txtDesc,from;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +50,7 @@ public class SingleMenu extends AppCompatActivity {
         mtvCal = findViewById(R.id.tvItemCal);
         ivIcon = findViewById(R.id.ivFav);
 
+        //Retrieve data from MenuActivity.java or MyFavourite.java
         Bundle bundle = getIntent().getExtras();
         image = bundle.getInt("image");
         name = bundle.getString("title");
@@ -59,6 +59,7 @@ public class SingleMenu extends AppCompatActivity {
         textDuration = bundle.getString("time");
         textCal = bundle.getString("calories");
 
+        //check data pass from Menu Activity or My Fav
         if (bundle.getString("from")!=null){
             from = bundle.getString("from");
         }
@@ -73,11 +74,13 @@ public class SingleMenu extends AppCompatActivity {
         menuID = name.trim();
         userID = mAuth.getCurrentUser().getUid();
 
+        //Check menu exist in database
         DocumentReference documentReference = db.collection("userDetail").document(userID).collection("favDetail").document(menuID);
         documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.getResult().exists()){
+                    //if exist: change fav to fav_icon
                     updateExist();
                 }
             }
@@ -90,8 +93,9 @@ public class SingleMenu extends AppCompatActivity {
     }
 
     public void btnOnClick_back(View view) {
+        //Redirect to home page when data passed from My Fav
         if(from!=null){
-            Intent i = new Intent(this,MainActivity.class);
+            Intent i = new Intent(this,MyFavourite.class);
             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
         } else
@@ -99,6 +103,9 @@ public class SingleMenu extends AppCompatActivity {
     }
 
     public void btnOnClick_mycart(View view) {
+        Intent intent = new Intent(SingleMenu.this,MyCart.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
 
     }
 
@@ -107,15 +114,22 @@ public class SingleMenu extends AppCompatActivity {
     }
 
     public void btnOnClick_shareItem(View view) {
+        Intent shareMenu = new Intent(Intent.ACTION_SEND);
+        shareMenu.setType("text/plain");
+        String shareSub = "Bowl Healthiness - " + name;
+        String shareBody = mtvDesc.getText().toString() + "\n\n The price is: RM" + textPrice + "\n\n\nBowl Healthiness\nGeorgetown Penang\nMalaysia\nTel no:012-3456789";
+        shareMenu.putExtra(Intent.EXTRA_SUBJECT,shareSub);
+        shareMenu.putExtra(Intent.EXTRA_TEXT,shareBody);
+        startActivity(Intent.createChooser(shareMenu,"Share via"));
     }
 
     public void ivOnClick_Favourite(View view) {
 
-        //TODO::PROBLEM
-
-        if(saved){
+        //delete item from database and remove fav_icon
+        if(saved==true){
             ivIcon.setImageResource(R.drawable.heart);
             saved = false;
+            //Delete item from database
             DocumentReference getMenuDB =  db.collection("userDetail").document(userID).collection("favDetail").document(menuID);
             getMenuDB.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
@@ -129,8 +143,11 @@ public class SingleMenu extends AppCompatActivity {
                 }
             });
         }
+        //save item to database and set icon to fav_icon
         else{
             ivIcon.setImageResource(R.drawable.fav_icon);
+            saved = true;
+            //Add item to database
             MenuDetail favDetails = new MenuDetail(image,name,desc,textPrice,textDuration,textCal);
             DocumentReference favList = db.collection("userDetail").document(userID).collection("favDetail").document(menuID);
             favList.set(favDetails).addOnSuccessListener(new OnSuccessListener<Void>() {

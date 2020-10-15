@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -32,22 +33,24 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.ViewHolder> {
 
     ArrayList<MenuDetail> favModels;
     Context context;
+    private FavOnClick mfavOnClick;
 
-    public FavAdapter(Context context,ArrayList<MenuDetail> favModels){
+    public FavAdapter(Context context,ArrayList<MenuDetail> favModels,FavOnClick mfavOnClick){
         this.context = context;
         this.favModels = favModels;
+        this.mfavOnClick = mfavOnClick;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         //Initialize variable
         ImageView ivBowl;
         ImageView ivFavIcon;
         TextView title;
         TextView duration;
         TextView price;
-        RelativeLayout mrelativeLayout;
+        FavOnClick favOnClick;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView,FavOnClick favOnClick) {
             super(itemView);
             //Assign Variable
             ivBowl = itemView.findViewById(R.id.ivFavBowl);
@@ -55,7 +58,13 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.ViewHolder> {
             title = itemView.findViewById(R.id.tvFavTitle);
             duration = itemView.findViewById(R.id.tvFavClock);
             price = itemView.findViewById(R.id.tvFavPrice);
-            mrelativeLayout = itemView.findViewById(R.id.mrelativeLayout);
+            this.favOnClick = favOnClick;
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            favOnClick.FavOnClick(getAdapterPosition());
         }
     }
 
@@ -63,7 +72,7 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.ViewHolder> {
     @Override
     public FavAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_single_fav,parent,false);
-        return new ViewHolder(view);
+        return new ViewHolder(view,mfavOnClick);
     }
 
     @Override
@@ -73,35 +82,20 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.ViewHolder> {
         holder.duration.setText(favModels.get(position).getTime());
         holder.price.setText(favModels.get(position).getPrice());
 
-        holder.mrelativeLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Place the content back to Single Menu page
-                Intent intent = new Intent(context,SingleMenu.class);
-                intent.putExtra("image",favModels.get(position).getMenuImg());
-                intent.putExtra("title",favModels.get(position).getMenuName());
-                intent.putExtra("time",favModels.get(position).getTime());
-                intent.putExtra("calories",favModels.get(position).getCalories());
-                intent.putExtra("desc",favModels.get(position).getMenuDesc());
-                intent.putExtra("price",favModels.get(position).getPrice());
-                intent.putExtra("from","FAV");
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                context.startActivity(intent);
-            }
-        });
-
         holder.ivFavIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseAuth mAuth = FirebaseAuth.getInstance();
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 String userID = mAuth.getCurrentUser().getUid();
+
                 DocumentReference getMenuDB =  db.collection("userDetail").document(userID).collection("favDetail").document(favModels.get(position).getMenuName());
+                favModels.clear(); //to prevent duplicate list
                 getMenuDB.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(context,"Item removed from your list.",Toast.LENGTH_SHORT).show();
-                        removeItem(position);
+                        notifyDataSetChanged();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -111,16 +105,15 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.ViewHolder> {
                 });
             }
         });
-
-    }
-
-    public void removeItem(int pos){
-        favModels.remove(pos);
-        notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
         return favModels.size();
+    }
+
+    //Create interface when item on click
+    public interface FavOnClick{
+        void FavOnClick(int position);
     }
 }

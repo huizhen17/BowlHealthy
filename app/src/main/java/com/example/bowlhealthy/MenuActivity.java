@@ -39,7 +39,6 @@ public class MenuActivity extends AppCompatActivity {
         menuList = new ArrayList<>();
 
         if(type.equalsIgnoreCase("Poke Bowl")){
-            //Swipe view for home menu category
             menuList.add(new MenuDetail(R.drawable.poke1,"Signature Salmon Poke Bowl",R.string.poke1Ing,R.string.poke1Desc,"13.50", "20","650"));
             menuList.add(new MenuDetail(R.drawable.poke2,"Signature Tuna Poke Bowl",R.string.poke2Ing,R.string.poke2Desc, "13.50","20","640"));
             menuList.add(new MenuDetail(R.drawable.poke3,"Ahi Poke Bowl",R.string.poke3Ing,R.string.poke3Desc, "12.50","15","660"));
@@ -90,10 +89,16 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void btnOnClick_back(View view) {
-        super.onBackPressed();
+        Intent intent = new Intent(this,MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 
     public void fabOnClick_cart(View view) {
+        Intent intent = new Intent(MenuActivity.this,MyCart.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
 }

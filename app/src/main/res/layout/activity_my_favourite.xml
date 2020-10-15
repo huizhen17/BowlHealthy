@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="51dp"
+        android:layout_height="18dp"
         android:layout_marginTop="8dp"
         android:onClick="btnOnClick_back"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -65,6 +65,62 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMenuType"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/ivEmptyFav"
+        android:layout_width="125dp"
+        android:layout_height="121dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMenuType"
+        app:layout_constraintVertical_bias="0.216"
+        app:srcCompat="@drawable/empty_fav_img" />
+
+    <TextView
+        android:id="@+id/tvEmptyFavTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="You haven't saved any item yet."
+        android:textAlignment="center"
+        android:textColor="@color/colorTitle"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ivEmptyFav"
+        app:layout_constraintStart_toStartOf="@+id/ivEmptyFav"
+        app:layout_constraintTop_toBottomOf="@+id/ivEmptyFav"
+        app:layout_constraintVertical_bias="0.132" />
+
+    <TextView
+        android:id="@+id/tvEmptyFavDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Saved and Share It to Your Friends!"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvEmptyFavTitle"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="@+id/tvEmptyFavTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmptyFavTitle"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnBackToMenu"
+        android:layout_width="240dp"
+        android:layout_height="46dp"
+        android:background="@drawable/middle_button"
+        android:fontFamily="sans-serif-black"
+        android:text="BACK TO MAIN"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvEmptyFavDesc"
+        app:layout_constraintStart_toStartOf="@+id/tvEmptyFavDesc"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmptyFavDesc"
+        app:layout_constraintVertical_bias="0.202" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

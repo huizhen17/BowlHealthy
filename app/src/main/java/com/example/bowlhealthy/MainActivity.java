@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null) {
             DocumentReference documentReference = mFirestore.collection("userDetail").document(userID);
-
             documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -78,8 +77,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    public void btnOnClick_search(View view) {
-
+    public void btnOnClick_share(View view) {
+        Intent shareMenu = new Intent(Intent.ACTION_SEND);
+        shareMenu.setType("text/plain");
+        String shareSub = "Bowl Healthiness ";
+        String shareBody = "Hi Dear. \n\nSatisfy all your cravings with Bowl Healthiness today! Order now and self pick-up without waiting! So, what are you waiting for. Grab it now!\n\n\nBowl Healthiness\nGeorgetown Penang\nMalaysia\nTel no:012-3456789";
+        shareMenu.putExtra(Intent.EXTRA_SUBJECT,shareSub);
+        shareMenu.putExtra(Intent.EXTRA_TEXT,shareBody);
+        startActivity(Intent.createChooser(shareMenu,"Share via"));
     }
 
     @Override
@@ -111,8 +116,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_account:
                 Intent intent = new Intent(this,MyAccount .class);
                 startActivity(intent);
-                //getSupportFragmentManager().beginTransaction().replace(R.id.fl_home,new Fragment_MyAcc()).commit();
-                Toast.makeText(this,"My Account",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_faq:
                 Toast.makeText(this,"FAQ",Toast.LENGTH_SHORT).show();
@@ -122,9 +125,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_logout:
                 mAuth.signOut();
-                Intent i = new Intent(this,LoginActivity.class);
-                startActivity(i);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                Intent in1= new Intent(this,LoginActivity.class);
+                startActivity(in1);
+                in1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 finish();
                 break;
         }

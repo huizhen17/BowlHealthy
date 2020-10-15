@@ -35,7 +35,6 @@ public class Fragment_Home extends Fragment {
 
         //Swipe view for home menu category
         models = new ArrayList<>();
-        models.add(new MainMenuItem(R.drawable.custombowl,"Custom Bowl",R.string.main_custom));
         models.add(new MainMenuItem(R.drawable.poke1,"Poke Bowl",R.string.main_poke));
         models.add(new MainMenuItem(R.drawable.buddha1,"Buddha Bowl",R.string.main_buddha));
         models.add(new MainMenuItem(R.drawable.burrito1,"Burrito Bowl",R.string.main_burrito));
@@ -53,6 +52,7 @@ public class Fragment_Home extends Fragment {
         adapter = new MainAdapter(getContext(), models);
         mRecyclerView.setAdapter(adapter);
 
+        //TODO::FAB BUTTON
         return v;
     }
 }

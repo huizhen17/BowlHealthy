@@ -40,18 +40,18 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/ivSearch"
+            android:id="@+id/ivShare"
             android:layout_width="29dp"
             android:layout_height="25dp"
             android:layout_marginEnd="24dp"
-            android:onClick="btnOnClick_search"
+            android:onClick="btnOnClick_share"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.996"
             app:layout_constraintStart_toEndOf="@+id/ivMenu"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.029"
-            app:srcCompat="@drawable/search" />
+            app:srcCompat="@drawable/share" />
 
         <ImageView
             android:id="@+id/ivMenu"
