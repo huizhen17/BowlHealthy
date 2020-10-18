@@ -35,7 +35,7 @@ public class SingleMenu extends AppCompatActivity {
     int image,desc;
     String name,textPrice, textDuration, textCal,menuID,userID;
     Boolean saved = false;
-    String txtDesc,from;
+    String from;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,10 +109,28 @@ public class SingleMenu extends AppCompatActivity {
 
     }
 
+    //Add menu into cart
     public void btnOnClick_addCart(View view) {
-        Toast.makeText(this,mtvName.getText().toString(),Toast.LENGTH_SHORT).show();
+
+        //TODO::Nid to check item exist or not
+
+        //Add item to database
+        CartDetail cartDetails = new CartDetail(image,name,textPrice,1+"","");
+        DocumentReference cartList = db.collection("userDetail").document(userID).collection("cartDetail").document(menuID);
+        cartList.set(cartDetails).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(SingleMenu.this,"This menu is added to cart.",Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(SingleMenu.this,"Fail to save. Try it later!",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
+    //Share Menu Detail to Friends
     public void btnOnClick_shareItem(View view) {
         Intent shareMenu = new Intent(Intent.ACTION_SEND);
         shareMenu.setType("text/plain");

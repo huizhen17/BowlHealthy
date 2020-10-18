@@ -1,5 +1,6 @@
 package com.example.bowlhealthy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,6 +54,16 @@ public class Fragment_Home extends Fragment {
         mRecyclerView.setAdapter(adapter);
 
         //TODO::FAB BUTTON
+        v.findViewById(R.id.fab_ViewCart).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(),MyCart.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+
+
         return v;
     }
 }

@@ -21,6 +21,7 @@ public class MenuDetail {
         this.calories = calories;
     }
 
+    //Overload constructor for favourite
     public MenuDetail(int menuImg,String menuName, int menuDesc, String price, String time, String calories) {
         this.menuImg = menuImg;
         this.menuName = menuName;
@@ -28,6 +29,13 @@ public class MenuDetail {
         this.price = price;
         this.time = time;
         this.calories = calories;
+    }
+
+    //Overload constructor for cart
+    public MenuDetail(int menuImg,String menuName, String price) {
+        this.menuImg = menuImg;
+        this.menuName = menuName;
+        this.price = price;
     }
 
     public MenuDetail() {
