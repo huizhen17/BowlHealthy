@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,6 +58,16 @@ public class MyCart extends AppCompatActivity {
         mbtnCheckout = findViewById(R.id.btnCheckOut);
         mbtnBackToMenu = findViewById(R.id.btnBackToMenu);
 
+        mivEmptyCart.setVisibility(View.VISIBLE);
+        mtvEmptyTitle.setVisibility(View.VISIBLE);
+        mtvEmptyDesc.setVisibility(View.VISIBLE);
+        mbtnBackToMenu.setVisibility(View.VISIBLE);
+        mivCartBg.setVisibility(View.INVISIBLE);
+        mtvCartRm.setVisibility(View.INVISIBLE);
+        mtvSubtotal.setVisibility(View.INVISIBLE);
+        mtvTextSubtotal.setVisibility(View.INVISIBLE);
+        mbtnCheckout.setVisibility(View.INVISIBLE);
+
         mbtnBackToMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,26 +102,29 @@ public class MyCart extends AppCompatActivity {
                             retrieveQuery(document.toObject(CartDetail.class), value.size());
                         }
                     }
-
                 }else
                     Toast.makeText(getApplicationContext(),"Fail to retrieve data.",Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
 
+    /*
+        Function to retrieve query from collection
+     */
     public void retrieveQuery(CartDetail cartDetail1, int collectionSize){
         cartDetails.add(cartDetail1);
+
+        //Calculate Subtotal
         double tempo = Double.parseDouble(cartDetail1.getCartPrice())*Integer.parseInt(cartDetail1.getCartQty());
         subTotal = String.format("%.2f",Double.parseDouble(subTotal)+tempo);
         counter = collectionSize;
+
         if (cartDetails.size()==counter){
             setRV();
+            mtvSubtotal.setText(subTotal);
             mivCartBg.setVisibility(View.VISIBLE);
             mtvCartRm.setVisibility(View.VISIBLE);
             mtvSubtotal.setVisibility(View.VISIBLE);
-            mtvSubtotal.setText(subTotal);
             mtvTextSubtotal.setVisibility(View.VISIBLE);
             mbtnCheckout.setVisibility(View.VISIBLE);
             mivEmptyCart.setVisibility(View.INVISIBLE);
@@ -120,6 +134,9 @@ public class MyCart extends AppCompatActivity {
         }
     }
 
+    /*
+        Function to set recycler view
+     */
     public void setRV(){
         //set up recycler view
         mRecyclerview = findViewById(R.id.cartRecyclerView);
@@ -136,9 +153,15 @@ public class MyCart extends AppCompatActivity {
     }
 
     public void btnOnClick_checkOut(View view) {
-
+        Toast.makeText(MyCart.this,subTotal+" 123",Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(MyCart.this, CheckOut.class);
+        i.putExtra("subtotal",subTotal);
+        startActivity(i);
     }
 
+    /*
+        Function to perform swipe left to delete the item in cart
+     */
     ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
@@ -150,4 +173,8 @@ public class MyCart extends AppCompatActivity {
             cartAdapter.deleteItem(viewHolder.getAdapterPosition());
         }
     };
+
+    public void btnHelp_onClick(View view) {
+        //TODO::Intent to FAQ page
+    }
 }

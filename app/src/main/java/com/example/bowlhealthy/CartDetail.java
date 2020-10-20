@@ -5,24 +5,16 @@ public class CartDetail {
     private String cartMenu;
     private String cartPrice;
     private String cartQty;
-    private String cartSubtotal;
 
-    public CartDetail(int cartImg,String cartMenu, String cartPrice, String cartQty, String cartSubtotal) {
+    public CartDetail(int cartImg,String cartMenu, String cartPrice, String cartQty) {
         this.cartImg = cartImg;
         this.cartMenu = cartMenu;
         this.cartPrice = cartPrice;
         this.cartQty = cartQty;
-        this.cartSubtotal = cartSubtotal;
-    }
-
-    public CartDetail(int cartImg,String cartMenu, String cartPrice) {
-        this.cartImg = cartImg;
-        this.cartMenu = cartMenu;
-        this.cartPrice = cartPrice;
     }
 
     public CartDetail() {
-        this(0,"","","1","");
+        this(0,"","","1");
     }
 
     public int getCartImg() {
@@ -55,13 +47,5 @@ public class CartDetail {
 
     public void setCartQty(String cartQty) {
         this.cartQty = cartQty;
-    }
-
-    public String getCartSubtotal() {
-        return cartSubtotal;
-    }
-
-    public void setCartSubtotal(String cartSubtotal) {
-        this.cartSubtotal = cartSubtotal;
     }
 }

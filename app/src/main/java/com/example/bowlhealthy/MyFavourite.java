@@ -100,8 +100,10 @@ public class MyFavourite extends AppCompatActivity implements FavAdapter.FavOnCl
         }
     }
 
+    /*
+        set up recycler view
+     */
     public void setRV(){
-        //set up recycler view
         mRecyclerView = findViewById(R.id.favRecyclerView);
         favAdapter = new FavAdapter(this, favList,this);
         favAdapter.notifyDataSetChanged();

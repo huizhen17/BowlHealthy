@@ -53,7 +53,6 @@ public class Fragment_Home extends Fragment {
         adapter = new MainAdapter(getContext(), models);
         mRecyclerView.setAdapter(adapter);
 
-        //TODO::FAB BUTTON
         v.findViewById(R.id.fab_ViewCart).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,7 +61,6 @@ public class Fragment_Home extends Fragment {
                 startActivity(intent);
             }
         });
-
 
         return v;
     }

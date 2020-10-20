@@ -112,10 +112,8 @@ public class SingleMenu extends AppCompatActivity {
     //Add menu into cart
     public void btnOnClick_addCart(View view) {
 
-        //TODO::Nid to check item exist or not
-
         //Add item to database
-        CartDetail cartDetails = new CartDetail(image,name,textPrice,1+"","");
+        CartDetail cartDetails = new CartDetail(image,name,textPrice,1+"");
         DocumentReference cartList = db.collection("userDetail").document(userID).collection("cartDetail").document(menuID);
         cartList.set(cartDetails).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override

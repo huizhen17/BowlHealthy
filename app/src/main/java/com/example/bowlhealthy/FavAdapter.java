@@ -82,6 +82,7 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.ViewHolder> {
         holder.duration.setText(favModels.get(position).getTime());
         holder.price.setText(favModels.get(position).getPrice());
 
+        //Fav icon clicked
         holder.ivFavIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

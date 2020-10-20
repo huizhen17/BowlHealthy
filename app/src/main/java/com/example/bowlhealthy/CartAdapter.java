@@ -72,17 +72,13 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         holder.mivCartImg.setImageResource(cartModel.get(position).getCartImg());
         holder.mtvCartTitle.setText(cartModel.get(position).getCartMenu());
         holder.mtvCartPrice.setText(cartModel.get(position).getCartPrice());
-
         holder.mtvCartQty.setText(cartModel.get(position).getCartQty());
+
         //When user click on the add item
         holder.mivAddCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 cartModel.get(position).setCartQty(Integer.parseInt(cartModel.get(position).getCartQty())+1+"");
-                //holder.mtvCartQty.setText(itemCounter+"");
-                price = Float.parseFloat(holder.mtvCartPrice.getText().toString());
-                totalPrice = price*itemCounter;
-                Toast.makeText(context, String.format("%.2f", totalPrice),Toast.LENGTH_SHORT).show();
                 savedItem(position);
             }
         });
@@ -94,12 +90,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                 cartModel.get(position).setCartQty(Integer.parseInt(cartModel.get(position).getCartQty())-1+""); //1-1 =0
 
                 if(Integer.parseInt(cartModel.get(position).getCartQty())<1){
-                    deleteItem(position);
+                    deleteItem(position); //delete item when quantity less than one
                 }
                 else{
-                    price = Float.parseFloat(holder.mtvCartPrice.getText().toString());
-                    totalPrice = price*itemCounter;
-                    Toast.makeText(context, String.format("%.2f", totalPrice),Toast.LENGTH_SHORT).show();
                     savedItem(position);
                 }
             }
@@ -112,12 +105,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         return cartModel.size();
     }
 
+    /*
+        Function to update item into firebase
+     */
     public void savedItem(int position){
         DocumentReference getMenuDB =  db.collection("userDetail").document(userID).collection("cartDetail").document(cartModel.get(position).getCartMenu());
         getMenuDB.update("cartQty",cartModel.get(position).getCartQty()).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(context,"Item update from your list.",Toast.LENGTH_SHORT).show();
                 notifyDataSetChanged();
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -128,6 +123,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         });
     }
 
+    /*
+        Function to delete item from firebase
+     */
     public void deleteItem(int position){
         DocumentReference getMenuDB =  db.collection("userDetail").document(userID).collection("cartDetail").document(cartModel.get(position).getCartMenu());
         cartModel.clear(); //to prevent duplicate list
