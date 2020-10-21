@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bowlhealthy">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,35 +9,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".SingleMenu"
+        <activity android:name=".SingleHistory"></activity>
+        <activity
+            android:name=".SingleMenu"
             android:screenOrientation="nosensor" />
-
-        <activity android:name=".MenuActivity"
-            android:windowSoftInputMode="adjustPan"
+        <activity
+            android:name=".MenuActivity"
+            android:screenOrientation="nosensor"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".CheckOut"
             android:screenOrientation="nosensor" />
-
-        <activity android:name=".CheckOut"
-            android:screenOrientation="nosensor"/>
-
-        <activity android:name=".OrderHistory"
-            android:screenOrientation="nosensor"/>
-
-        <activity android:name=".MyCart"
-            android:screenOrientation="nosensor"/>
-
-        <activity android:name=".MyFavourite"
-            android:screenOrientation="nosensor"/>
-
-        <activity android:name=".MyAccount"
-            android:screenOrientation="nosensor"/>
-
-        <activity android:name=".ForgetPassword"
-            android:screenOrientation="nosensor"/>
-
-        <activity android:name=".SignUp"
-            android:screenOrientation="nosensor"/>
-
+        <activity
+            android:name=".OrderHistory"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".MyCart"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".MyFavourite"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".MyAccount"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".ForgetPassword"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".SignUp"
+            android:screenOrientation="nosensor" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,13 +45,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".MainActivity"
-            android:screenOrientation="nosensor"/>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="nosensor" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

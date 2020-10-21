@@ -153,9 +153,9 @@ public class MyCart extends AppCompatActivity {
     }
 
     public void btnOnClick_checkOut(View view) {
-        Toast.makeText(MyCart.this,subTotal+" 123",Toast.LENGTH_SHORT).show();
         Intent i = new Intent(MyCart.this, CheckOut.class);
         i.putExtra("subtotal",subTotal);
+        i.putParcelableArrayListExtra("cartList",cartDetails);
         startActivity(i);
     }
 
@@ -170,6 +170,15 @@ public class MyCart extends AppCompatActivity {
 
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            mivEmptyCart.setVisibility(View.VISIBLE);
+            mtvEmptyTitle.setVisibility(View.VISIBLE);
+            mtvEmptyDesc.setVisibility(View.VISIBLE);
+            mbtnBackToMenu.setVisibility(View.VISIBLE);
+            mivCartBg.setVisibility(View.INVISIBLE);
+            mtvCartRm.setVisibility(View.INVISIBLE);
+            mtvSubtotal.setVisibility(View.INVISIBLE);
+            mtvTextSubtotal.setVisibility(View.INVISIBLE);
+            mbtnCheckout.setVisibility(View.INVISIBLE);
             cartAdapter.deleteItem(viewHolder.getAdapterPosition());
         }
     };

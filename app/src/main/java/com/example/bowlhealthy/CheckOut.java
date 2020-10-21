@@ -2,6 +2,8 @@ package com.example.bowlhealthy;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -24,20 +26,27 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 public class CheckOut extends AppCompatActivity {
 
+    private static double TAX = 0.60;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    ArrayList<ReceiptDetail> mRepDetail = new ArrayList<>();
+    ArrayList<CartDetail> mcartDetail = new ArrayList<>();
+    RecyclerView mRecyclerview;
+    OrderItemAdapter orderItemAdapter;
     TextView mtvRecName, mtvRecPhone;
     TextView mtvOrderDate, mtvOrderTime;
-    TextView mtvEstTime, mtvSubtotal, mtvTotalAmt;
+    TextView mtvEstTime, mtvSubtotal, mtvTax, mtvTotalAmt;
     String id;
+    Double total,subtotal;
     DatePickerDialog.OnDateSetListener mDateSetListener;
-    TimePickerDialog.OnTimeSetListener mTimeSetListener;
-    int hour,min;
+    int hourOfDay,minOfDay;
+    String mark="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,21 +59,46 @@ public class CheckOut extends AppCompatActivity {
         mtvOrderTime = findViewById(R.id.tvOrderTime);
         mtvEstTime = findViewById(R.id.tvEstimatedTime);
         mtvSubtotal = findViewById(R.id.tvCheckoutSubtotal);
+        mtvTax = findViewById(R.id.tvCheckoutTax);
         mtvTotalAmt = findViewById(R.id.tvTotalAmt);
 
+        //Returns the value associated with the given key from MyCart.java
         Bundle bundle = getIntent().getExtras();
         mtvSubtotal.setText(bundle.getString("subtotal"));
-        mtvTotalAmt.setText(bundle.getString("subtotal"));
+        subtotal = Double.valueOf(mtvSubtotal.getText().toString());
+        total = subtotal + TAX;
+        mtvTotalAmt.setText((String.format("%.2f", total)));
 
-        //TODO::Date + Time
+        if(bundle != null) {
+            mcartDetail=getIntent().getParcelableArrayListExtra("cartList");
+        }
+
+
+        //Declare and assign date to local
+        final Calendar cal = Calendar.getInstance();
+        final int year = cal.get(Calendar.YEAR);
+        final int month = cal.get(Calendar.MONTH);
+        final int day = cal.get(Calendar.DAY_OF_MONTH);
+        final int hour = cal.get(Calendar.HOUR);
+        final int min = cal.get(Calendar.MINUTE);
+        final int marker = cal.get(Calendar.AM_PM);
+        String date = day + "/" + (month+1) + "/" + year;
+        mtvOrderDate.setText(date);
+
+        if(marker==0) {
+            mark = "AM";
+        }
+        else {
+            mark = "PM";
+        }
+        //Declare and assign time to local
+        String time = hour + ":" + min + " " + mark;
+        mtvOrderTime.setText(time);
+
+        //When user wishes to change date
         mtvOrderDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Calendar cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
-
                 DatePickerDialog dialog = new DatePickerDialog(CheckOut.this,
                         R.style.DatePickerTheme,mDateSetListener,year,month,day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
@@ -82,22 +116,21 @@ public class CheckOut extends AppCompatActivity {
             }
         };
 
-        //Set time
+        //When user wishes to change date
         mtvOrderTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 TimePickerDialog timePickerDialog = new TimePickerDialog(CheckOut.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourDay, int minDay) {
-                        hour = hourDay;
-                        min = minDay;
+                        hourOfDay = hourDay;
+                        minOfDay = minDay;
 
-                        String time = hour + ":" + min;
+                        String time = hourOfDay + ":" + minOfDay;
                         SimpleDateFormat f24hours = new SimpleDateFormat("HH:mm");
                         try {
                             Date date = f24hours.parse(time);
-                            SimpleDateFormat f12hours = new SimpleDateFormat("HH:mm aa");
+                            SimpleDateFormat f12hours = new SimpleDateFormat("h:mm aa");
                             mtvOrderTime.setText(f12hours.format(date));
                         } catch (ParseException e) {
                             e.printStackTrace();
@@ -119,6 +152,7 @@ public class CheckOut extends AppCompatActivity {
                 String name = documentSnapshot.getString("name");
                 String phone = documentSnapshot.getString("phone");
 
+                //Set user name and phone
                 mtvRecName.setText(name);
                 mtvRecPhone.setText(phone);
             }
@@ -128,6 +162,14 @@ public class CheckOut extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Problem on retrieving data. Please try again later.",Toast.LENGTH_SHORT).show();
             }
         });
+
+        //Set up adapter
+        mRecyclerview = findViewById(R.id.orderRecyclerView);
+        orderItemAdapter = new OrderItemAdapter(this, mcartDetail);
+        orderItemAdapter.notifyDataSetChanged();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        mRecyclerview.setLayoutManager(layoutManager);
+        mRecyclerview.setAdapter(orderItemAdapter);
 
     }
 
@@ -139,5 +181,7 @@ public class CheckOut extends AppCompatActivity {
     }
 
     public void btnOrder_onClick(View view) {
+        //TODO::Saved in database
+
     }
 }
