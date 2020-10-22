@@ -17,7 +17,6 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.View
     Context context;
     ArrayList<CartDetail> repModel;
 
-
     //Create constructor for cart adapter
     public OrderItemAdapter(Context context, ArrayList<CartDetail> repModel){
         this.context = context;

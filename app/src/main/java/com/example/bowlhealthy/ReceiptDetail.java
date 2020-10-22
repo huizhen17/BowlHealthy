@@ -7,8 +7,6 @@ public class ReceiptDetail extends CartDetail{
     private String repPhone;
     private String repDate;
     private String repTime;
-    //private String repMenuName;
-    //private String repMenuQty;
     private String repSubtotal;
     private String repTotal;
 

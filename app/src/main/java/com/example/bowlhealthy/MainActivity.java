@@ -108,7 +108,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(i);
                 break;
             case R.id.nav_cart:
-                Toast.makeText(this,"Shopping Carts",Toast.LENGTH_SHORT).show();
+                Intent in = new Intent(this,MyCart.class);
+                startActivity(in);
                 break;
             case R.id.nav_history:
                 Toast.makeText(this,"History",Toast.LENGTH_SHORT).show();

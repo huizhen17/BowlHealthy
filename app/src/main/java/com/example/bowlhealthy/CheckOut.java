@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -20,9 +21,12 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,8 +39,8 @@ public class CheckOut extends AppCompatActivity {
     private static double TAX = 0.60;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    ArrayList<ReceiptDetail> mRepDetail = new ArrayList<>();
     ArrayList<CartDetail> mcartDetail = new ArrayList<>();
+    ArrayList<ReceiptDetail> mrepDetail = new ArrayList<>();
     RecyclerView mRecyclerview;
     OrderItemAdapter orderItemAdapter;
     TextView mtvRecName, mtvRecPhone;
@@ -47,6 +51,8 @@ public class CheckOut extends AppCompatActivity {
     DatePickerDialog.OnDateSetListener mDateSetListener;
     int hourOfDay,minOfDay;
     String mark="";
+    String receiptID="";
+    String name,phone,date,time,subTotal,amount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,10 +184,90 @@ public class CheckOut extends AppCompatActivity {
     }
 
     public void btnHelp_onClick(View view) {
+        //TODO::HELP
     }
 
     public void btnOrder_onClick(View view) {
-        //TODO::Saved in database
+        //Generate random ID from firebase
+        DocumentReference ref = db.collection("orderDetail").document();
+        receiptID = ref.getId();
 
+        name = mtvRecName.getText().toString();
+        phone = mtvRecPhone.getText().toString();
+        date = mtvOrderDate.getText().toString();
+        time = mtvOrderTime.getText().toString();
+        subTotal = mtvSubtotal.getText().toString();
+        amount = mtvTotalAmt.getText().toString();
+
+        ReceiptDetail repDetails = new ReceiptDetail(name,phone,date,time,subTotal,amount);
+        DocumentReference orderList = db.collection("userDetail").document(id).collection("orderDetail").document(receiptID);
+        orderList.set(repDetails).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(CheckOut.this,"This menu is saved.",Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(CheckOut.this,"Fail to save. Try it later!",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        CollectionReference orderCartQuery = db.collection("userDetail").document(id).collection("cartDetail");
+        orderCartQuery.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for(QueryDocumentSnapshot queryDocumentSnapshot : queryDocumentSnapshots){
+                    retrieveItem(queryDocumentSnapshot.toObject(CartDetail.class));
+                }
+            }
+        });
+
+        //TODO::Saved in database (View Receipt)
+        Intent i = new Intent(CheckOut.this,SingleHistory.class);
+        i.putExtra("receiptNo",receiptID);
+        i.putExtra("name",name);
+        i.putExtra("phone",phone);
+        i.putExtra("date",date);
+        i.putExtra("time",time);
+        i.putExtra("subtotal",subTotal);
+        i.putExtra("amount",amount);
+        i.putParcelableArrayListExtra("cartList",mcartDetail);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+    }
+
+    public void retrieveItem(CartDetail cartDetailQuery){
+        String cartItemMenu = cartDetailQuery.getCartMenu();
+        String cartItemQty = cartDetailQuery.getCartQty();
+        CartDetail mcartDetail = new CartDetail(0,cartItemMenu,"",cartItemQty);
+
+        //Get retrieve item and store into firebase
+        DocumentReference cartItemList = db.collection("userDetail").document(id).collection("orderDetail").document(receiptID).collection("cartItemDetail").document(cartItemMenu);
+        cartItemList.set(mcartDetail).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(CheckOut.this,"This menu is saved.",Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(CheckOut.this,"Fail to save. Try it later!",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //Delete item from Cart List
+        DocumentReference getMenuDB =  db.collection("userDetail").document(id).collection("cartDetail").document(cartItemMenu);
+        getMenuDB.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(CheckOut.this,"This menu is removed from favourite list.",Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(CheckOut.this,"Error. Try it later!",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
