@@ -32,7 +32,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/roboto_italic"
             android:text="Receipt No:"
@@ -40,7 +40,7 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView13"
             app:layout_constraintEnd_toEndOf="@+id/imageView13"
-            app:layout_constraintHorizontal_bias="0.023"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/imageView13"
             app:layout_constraintTop_toTopOf="@+id/imageView13"
             app:layout_constraintVertical_bias="0.0" />
@@ -53,7 +53,7 @@
             android:fontFamily="@font/roboto_italic"
             android:text="#000001"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView"
             app:layout_constraintEnd_toEndOf="@+id/imageView13"
             app:layout_constraintHorizontal_bias="0.0"
@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Receiver Name:"
+            android:text="Order Date:"
             app:layout_constraintBottom_toBottomOf="@+id/imageView13"
             app:layout_constraintEnd_toEndOf="@+id/textView"
             app:layout_constraintHorizontal_bias="0.0"
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="8dp"
-            android:text="Receiver Phone:"
+            android:text="Total Amount:"
             app:layout_constraintBottom_toBottomOf="@+id/imageView13"
             app:layout_constraintEnd_toEndOf="@+id/textView37"
             app:layout_constraintHorizontal_bias="0.0"
@@ -87,26 +87,42 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/tvSingleRepName"
+            android:id="@+id/tvSingleRepDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:text="Hui Zhen"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="00/00/0000"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView37"
             app:layout_constraintEnd_toEndOf="@+id/imageView13"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textView37" />
 
         <TextView
-            android:id="@+id/tvSingleRepPhone"
+            android:id="@+id/tvSingleRepAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:text="0123456789"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="40.50"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView41"
             app:layout_constraintEnd_toEndOf="@+id/imageView13"
             app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textview2" />
+
+        <TextView
+            android:id="@+id/textview2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="RM"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView41"
+            app:layout_constraintEnd_toEndOf="@+id/imageView13"
+            app:layout_constraintHorizontal_bias="0.807"
             app:layout_constraintStart_toEndOf="@+id/textView41" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

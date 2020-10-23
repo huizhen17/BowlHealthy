@@ -3,6 +3,7 @@ package com.example.bowlhealthy;
 import android.os.Parcel;
 
 public class ReceiptDetail extends CartDetail{
+    private String repID;
     private String repName;
     private String repPhone;
     private String repDate;
@@ -10,8 +11,9 @@ public class ReceiptDetail extends CartDetail{
     private String repSubtotal;
     private String repTotal;
 
-    public ReceiptDetail(int cartImg, String cartMenu, String cartPrice, String cartQty, String repName, String repPhone, String repDate, String repTime, String repSubtotal, String repTotal) {
+    public ReceiptDetail(int cartImg, String cartMenu, String cartPrice, String cartQty, String repID, String repName, String repPhone, String repDate, String repTime, String repSubtotal, String repTotal) {
         super(cartImg, cartMenu, cartPrice, cartQty);
+        this.repID = repID;
         this.repName = repName;
         this.repPhone = repPhone;
         this.repDate = repDate;
@@ -20,7 +22,8 @@ public class ReceiptDetail extends CartDetail{
         this.repTotal = repTotal;
     }
 
-    public ReceiptDetail(String repName, String repPhone, String repDate, String repTime, String repSubtotal, String repTotal) {
+    public ReceiptDetail(String repID, String repName, String repPhone, String repDate, String repTime, String repSubtotal, String repTotal) {
+        this.repID = repID;
         this.repName = repName;
         this.repPhone = repPhone;
         this.repDate = repDate;
@@ -29,14 +32,24 @@ public class ReceiptDetail extends CartDetail{
         this.repTotal = repTotal;
     }
 
-    public ReceiptDetail(Parcel in, String repName, String repPhone, String repDate, String repTime, String repSubtotal, String repTotal) {
+    public ReceiptDetail(Parcel in, String repID, String repName, String repPhone, String repDate, String repTime, String repSubtotal, String repTotal) {
         super(in);
+        this.repID = repID;
         this.repName = repName;
         this.repPhone = repPhone;
         this.repDate = repDate;
         this.repTime = repTime;
         this.repSubtotal = repSubtotal;
         this.repTotal = repTotal;
+    }
+
+    public ReceiptDetail(){this(0,"","","","","","","","","","");}
+    public String getRepID() {
+        return repID;
+    }
+
+    public void setRepID(String repID) {
+        this.repID = repID;
     }
 
     public String getRepName() {

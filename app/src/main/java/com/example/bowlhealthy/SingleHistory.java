@@ -1,5 +1,7 @@
 package com.example.bowlhealthy;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,6 +10,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -18,6 +30,10 @@ public class SingleHistory extends AppCompatActivity {
     RecyclerView mhisRecyclerView;
     OrderItemAdapter orderItemAdapter;
     ArrayList<CartDetail> mcartDetail = new ArrayList<>();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    String pass="";
+    int counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,20 +59,48 @@ public class SingleHistory extends AppCompatActivity {
         mtvHisSubtotal.setText(bundle.get("subtotal").toString());
         mtvHisTotalAmt.setText(bundle.get("amount").toString());
 
-        if(bundle != null) {
+        //Pass through Check Out Activity
+        if(getIntent().getParcelableArrayListExtra("cartList")!=null) {
             mcartDetail=getIntent().getParcelableArrayListExtra("cartList");
+            mhisRecyclerView = findViewById(R.id.singleHistoryRecyclerView);
+            orderItemAdapter = new OrderItemAdapter(this, mcartDetail);
+            orderItemAdapter.notifyDataSetChanged();
+            LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+            mhisRecyclerView.setLayoutManager(layoutManager);
+            mhisRecyclerView.setAdapter(orderItemAdapter);
         }
+        else{
+            CollectionReference collectionReference = db.collection("userDetail").document(mAuth.getCurrentUser().getUid()).collection("orderDetail").document(mtvReceiptNo.getText().toString()).collection("cartItemDetail");
+            collectionReference.addSnapshotListener(this, new EventListener<QuerySnapshot>() {
+                @Override
+                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                    if (error==null){
+                        if (value.isEmpty()){
+                            //TODO set error message by Chee Ezra <3
+                        }else{
+                            for (QueryDocumentSnapshot queryDocumentSnapshot : value){
+                                storeCardDetails(queryDocumentSnapshot.toObject(CartDetail.class),value.size() );
+                            }
+                        }
 
+                    }
+                }
+            });
+        }
+    }
 
-
-        //Set up adapter
-        mhisRecyclerView = findViewById(R.id.singleHistoryRecyclerView);
-        orderItemAdapter = new OrderItemAdapter(this, mcartDetail);
-        orderItemAdapter.notifyDataSetChanged();
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
-        mhisRecyclerView.setLayoutManager(layoutManager);
-        mhisRecyclerView.setAdapter(orderItemAdapter);
-
+    private void storeCardDetails(CartDetail cartDetail, int size) {
+        mcartDetail.add(cartDetail);
+        counter = size;
+        if(mcartDetail.size()==counter){
+            //Set up adapter
+            mhisRecyclerView = findViewById(R.id.singleHistoryRecyclerView);
+            orderItemAdapter = new OrderItemAdapter(this, mcartDetail);
+            orderItemAdapter.notifyDataSetChanged();
+            LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+            mhisRecyclerView.setLayoutManager(layoutManager);
+            mhisRecyclerView.setAdapter(orderItemAdapter);
+        }
     }
 
     public void btnOnClick_back(View view) {

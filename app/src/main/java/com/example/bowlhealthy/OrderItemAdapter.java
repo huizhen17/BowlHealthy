@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.ViewHolder> {
 
     Context context;
-    ArrayList<CartDetail> repModel;
+    ArrayList<CartDetail> repModel = new ArrayList<>();
 
     //Create constructor for cart adapter
     public OrderItemAdapter(Context context, ArrayList<CartDetail> repModel){

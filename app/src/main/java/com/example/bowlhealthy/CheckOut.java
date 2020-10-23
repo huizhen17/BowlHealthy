@@ -40,7 +40,6 @@ public class CheckOut extends AppCompatActivity {
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     ArrayList<CartDetail> mcartDetail = new ArrayList<>();
-    ArrayList<ReceiptDetail> mrepDetail = new ArrayList<>();
     RecyclerView mRecyclerview;
     OrderItemAdapter orderItemAdapter;
     TextView mtvRecName, mtvRecPhone;
@@ -199,12 +198,11 @@ public class CheckOut extends AppCompatActivity {
         subTotal = mtvSubtotal.getText().toString();
         amount = mtvTotalAmt.getText().toString();
 
-        ReceiptDetail repDetails = new ReceiptDetail(name,phone,date,time,subTotal,amount);
+        ReceiptDetail repDetails = new ReceiptDetail(receiptID,name,phone,date,time,subTotal,amount);
         DocumentReference orderList = db.collection("userDetail").document(id).collection("orderDetail").document(receiptID);
         orderList.set(repDetails).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(CheckOut.this,"This menu is saved.",Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -247,7 +245,6 @@ public class CheckOut extends AppCompatActivity {
         cartItemList.set(mcartDetail).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(CheckOut.this,"This menu is saved.",Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -261,7 +258,6 @@ public class CheckOut extends AppCompatActivity {
         getMenuDB.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(CheckOut.this,"This menu is removed from favourite list.",Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

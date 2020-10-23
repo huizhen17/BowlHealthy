@@ -99,24 +99,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Intent i;
         switch (item.getItemId()){
             case R.id.nav_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fl_home,new Fragment_Home()).commit();
                 break;
             case R.id.nav_fav:
-                Intent i = new Intent(this,MyFavourite.class);
+                i = new Intent(this,MyFavourite.class);
                 startActivity(i);
                 break;
             case R.id.nav_cart:
-                Intent in = new Intent(this,MyCart.class);
-                startActivity(in);
+                i = new Intent(this,MyCart.class);
+                startActivity(i);
                 break;
             case R.id.nav_history:
                 Toast.makeText(this,"History",Toast.LENGTH_SHORT).show();
+                i = new Intent(this,OrderHistory.class);
+                startActivity(i);
                 break;
             case R.id.nav_account:
-                Intent intent = new Intent(this,MyAccount .class);
-                startActivity(intent);
+                i = new Intent(this,MyAccount .class);
+                startActivity(i);
                 break;
             case R.id.nav_faq:
                 Toast.makeText(this,"FAQ",Toast.LENGTH_SHORT).show();
@@ -126,9 +129,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_logout:
                 mAuth.signOut();
-                Intent in1= new Intent(this,LoginActivity.class);
-                startActivity(in1);
-                in1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i= new Intent(this,LoginActivity.class);
+                startActivity(i);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 finish();
                 break;
         }
