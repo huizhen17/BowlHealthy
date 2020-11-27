@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if(password.isEmpty()){
-            etPassword.setError("Email required");
+            etPassword.setError("Password required");
             etPassword.requestFocus();
             return;
         }

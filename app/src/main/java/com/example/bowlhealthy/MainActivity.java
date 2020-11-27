@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     navUsername.setText(documentSnapshot.getString("name"));
                 }
             });
-
         }
 
     }
@@ -113,7 +112,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(i);
                 break;
             case R.id.nav_history:
-                Toast.makeText(this,"History",Toast.LENGTH_SHORT).show();
                 i = new Intent(this,OrderHistory.class);
                 startActivity(i);
                 break;
@@ -122,10 +120,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(i);
                 break;
             case R.id.nav_faq:
-                Toast.makeText(this,"FAQ",Toast.LENGTH_SHORT).show();
+                i = new Intent(this,FAQ .class);
+                startActivity(i);
                 break;
             case R.id.nav_tnc:
-                Toast.makeText(this,"Terms and Conditions",Toast.LENGTH_SHORT).show();
+                i = new Intent(this,TermCondition .class);
+                startActivity(i);
                 break;
             case R.id.nav_logout:
                 mAuth.signOut();

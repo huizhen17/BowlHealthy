@@ -82,4 +82,22 @@
     <string name="smoothie3Desc">Delicious And Healthy Mango Smoothie Bowl Topped With Raisins, Berries, Shredded Coconut And Sliced Almonds!</string>
     <string name="smoothie4Desc">This bowl is packed with protein from the yogurt, protein powder, flax, chia seeds and oats.</string>
 
+    <string name="tnc">
+        <b>TERMS OF USE\n\n</b>
+        These Terms of Use (“Terms”) govern your use of the mobile applications provided by Bowl Healthiness (or referred to as “us”) (collectively the “Platforms”).
+        Please read these Terms carefully. By accessing and using the Platforms, you agree that you have read, understood and accepted the Terms including any additional
+        terms and conditions and any policies referenced herein, available on the Platforms or available by hyperlink.
+        If you do not agree or fall within the Terms, please do not use the Platforms.\n\n
+        The Platforms may be used by (i) natural persons who have reached 18 years of age and (ii) corporate legal entities, e.g companies.
+        Where applicable, these Terms shall be subject to country-specific provisions as set out herein.\n\n
+        Users below the age of 18 must obtain consent from parent(s) or legal guardian(s), who by accepting these Terms shall agree to take responsibility for
+        your actions and any charges associated with your use of the Platforms and/or purchase of Goods.
+        If you do not have consent from your parent(s) or legal guardian(s), you must stop using/accessing the Platforms immediately.\n\n
+
+        Bowl Healthiness reserves the right to change or modify these Terms (including our policies which are incorporated into these Terms) at any time.
+        You are strongly recommended to read these Terms regularly.
+        You will be deemed to have agreed to the amended Terms by your continued use of the Platforms following the date on which the amended Terms are posted.
+
+
+    </string>
 </resources>
