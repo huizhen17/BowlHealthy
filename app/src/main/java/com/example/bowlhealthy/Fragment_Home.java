@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -74,20 +75,23 @@ public class Fragment_Home extends Fragment {
 
         @Override
         public void run() {
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    if(viewPager.getCurrentItem()==0){
-                        viewPager.setCurrentItem(1);
+            if(getActivity()!=null){
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(viewPager.getCurrentItem()==0){
+                            viewPager.setCurrentItem(1);
+                        }
+                        else if(viewPager.getCurrentItem()==1){
+                            viewPager.setCurrentItem(2);
+                        }
+                        else{
+                            viewPager.setCurrentItem(0);
+                        }
                     }
-                    else if(viewPager.getCurrentItem()==1){
-                        viewPager.setCurrentItem(2);
-                    }
-                    else{
-                        viewPager.setCurrentItem(0);
-                    }
-                }
-            });
+                });
+            }
+
         }
     }
 }

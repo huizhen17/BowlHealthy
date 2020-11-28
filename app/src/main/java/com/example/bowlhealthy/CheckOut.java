@@ -51,7 +51,7 @@ public class CheckOut extends AppCompatActivity {
     int hourOfDay,minOfDay;
     String mark="";
     String receiptID="";
-    String name,phone,date,time,subTotal,amount;
+    String name,phone,date,time,subTotal,amount,email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,6 +156,7 @@ public class CheckOut extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 String name = documentSnapshot.getString("name");
                 String phone = documentSnapshot.getString("phone");
+                email = documentSnapshot.getString("email");
 
                 //Set user name and phone
                 mtvRecName.setText(name);
@@ -221,6 +222,16 @@ public class CheckOut extends AppCompatActivity {
                 }
             }
         });
+
+
+        //Generated receipt will be sent to user
+        String title = "View Your Receipt - Bowl Healthiness";
+        String text ="Thank you for choosing us.\n Below is your invoice: \n\n"   +
+                "Estimated time   : " +  mtvEstTime.getText().toString() + "mins" +
+                "\nOrder Time     : " + time +
+                "\nTotal Amount   : RM " + amount + "\n\n\nHave a nice day.";
+        JavaMailAPI sendMail = new JavaMailAPI(this,email,title,text);
+        sendMail.execute();
 
         Intent i = new Intent(CheckOut.this,SingleHistory.class);
         i.putExtra("receiptNo",receiptID);
