@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/faq_answer"
                 android:text="You can order easily using our online platform."
-                android:padding="14dp"
+                android:padding="10dp"
                 android:textSize="18sp" />
 
         </RelativeLayout>

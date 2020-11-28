@@ -76,7 +76,6 @@ public class SingleHistory extends AppCompatActivity {
                 public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                     if (error==null){
                         if (value.isEmpty()){
-                            //TODO set error message by Chee Ezra <3
                         }else{
                             for (QueryDocumentSnapshot queryDocumentSnapshot : value){
                                 storeCardDetails(queryDocumentSnapshot.toObject(CartDetail.class),value.size() );

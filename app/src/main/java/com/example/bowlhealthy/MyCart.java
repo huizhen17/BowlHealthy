@@ -184,6 +184,7 @@ public class MyCart extends AppCompatActivity {
     };
 
     public void btnHelp_onClick(View view) {
-        //TODO::Intent to FAQ page
+        Intent i = new Intent(MyCart.this,FAQ.class);
+        startActivity(i);
     }
 }

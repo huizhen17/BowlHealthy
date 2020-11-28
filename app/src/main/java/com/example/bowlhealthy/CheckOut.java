@@ -183,7 +183,8 @@ public class CheckOut extends AppCompatActivity {
     }
 
     public void btnHelp_onClick(View view) {
-        //TODO::HELP
+        Intent i = new Intent(CheckOut.this,FAQ.class);
+        startActivity(i);
     }
 
     public void btnOrder_onClick(View view) {
@@ -221,7 +222,6 @@ public class CheckOut extends AppCompatActivity {
             }
         });
 
-        //TODO::Saved in database (View Receipt)
         Intent i = new Intent(CheckOut.this,SingleHistory.class);
         i.putExtra("receiptNo",receiptID);
         i.putExtra("name",name);

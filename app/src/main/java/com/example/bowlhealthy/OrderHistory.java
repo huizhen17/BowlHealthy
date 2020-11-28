@@ -44,7 +44,6 @@ public class OrderHistory extends AppCompatActivity implements SingleHistoryAdap
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if (error==null) {
                     if (value.isEmpty()){
-                        //TODO::Set Empty View in xml
                     }else {
                         for (QueryDocumentSnapshot document : value) {
                             retrieveQuery(document.toObject(ReceiptDetail.class), value.size());
@@ -57,7 +56,6 @@ public class OrderHistory extends AppCompatActivity implements SingleHistoryAdap
         });
 
 
-        //TODO::Adapter
     }
 
     public void retrieveQuery(ReceiptDetail repDetail1, int collectionSize){
@@ -65,7 +63,6 @@ public class OrderHistory extends AppCompatActivity implements SingleHistoryAdap
         counter = collectionSize;
         if (repList.size()==counter){
             setRV();
-            //TODO::Set Empty View in xml
         }
     }
 
@@ -99,7 +96,6 @@ public class OrderHistory extends AppCompatActivity implements SingleHistoryAdap
         i.putExtra("time",repList.get(position).getRepTime());
         i.putExtra("subtotal",repList.get(position).getRepSubtotal());
         i.putExtra("amount",repList.get(position).getRepTotal());
-        //TODO::Passing the cart Detail in order Detail
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
     }
