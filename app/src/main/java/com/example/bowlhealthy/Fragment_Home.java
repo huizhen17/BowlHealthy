@@ -33,10 +33,10 @@ public class Fragment_Home extends Fragment {
     TextView mtvFactTitle, mtvFactDesc;
     ArrayList<ArrayList<String>> factArray = new ArrayList<>();
     String factData[][]={
-            {"Why Grain Bowl Food Trend?","Bowls-As-Meals Has Officially Become Part Of Culinary Vocabulary."},
+            {"Why Grain Bowl Food Trend?","Bowls-As-Meals has become part of culinary vocabulary."},
             {"Are bowls for weight loss?","Keep bowl as a salad with the same weight loss to boot."},
-            {"Why are bowls so popular?","Food stylists say that bowls make health foods more photogenic."},
-            {"Who invented bowls?","A British anthropologist, Sir Flinders Petrie, discovered in 1930's."},
+            {"Why are bowls so popular?","Food stylists said bowls make health foods photogenic."},
+            {"Who invented bowls?","British anthropologist, Sir Flinders Petrie discovered it."},
             {"Are Buddha Bowls cold?","A Buddha bowl is a vegetarian meal which served cold. "},
     };
 

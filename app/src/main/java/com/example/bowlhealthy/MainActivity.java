@@ -127,6 +127,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 i = new Intent(this,TermCondition .class);
                 startActivity(i);
                 break;
+            case R.id.nav_about:
+                i = new Intent(this,AboutUs .class);
+                startActivity(i);
+                break;
             case R.id.nav_logout:
                 mAuth.signOut();
                 i= new Intent(this,LoginActivity.class);
