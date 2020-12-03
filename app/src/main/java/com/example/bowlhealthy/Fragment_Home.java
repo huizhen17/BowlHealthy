@@ -5,10 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Objects;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -26,6 +30,15 @@ public class Fragment_Home extends Fragment {
     ViewPager viewPager;
     MainAdapter adapter;
     ArrayList<MainMenuItem> models;
+    TextView mtvFactTitle, mtvFactDesc;
+    ArrayList<ArrayList<String>> factArray = new ArrayList<>();
+    String factData[][]={
+            {"Why Grain Bowl Food Trend?","Bowls-As-Meals Has Officially Become Part Of Culinary Vocabulary."},
+            {"Are bowls for weight loss?","Keep bowl as a salad with the same weight loss to boot."},
+            {"Why are bowls so popular?","Food stylists say that bowls make health foods more photogenic."},
+            {"Who invented bowls?","A British anthropologist, Sir Flinders Petrie, discovered in 1930's."},
+            {"Are Buddha Bowls cold?","A Buddha bowl is a vegetarian meal which served cold. "},
+    };
 
     @Nullable
     @Override
@@ -68,7 +81,34 @@ public class Fragment_Home extends Fragment {
             }
         });
 
+        mtvFactTitle = v.findViewById(R.id.tvFactTitle);
+        mtvFactDesc = v.findViewById(R.id.tvFactDesc);
+
+        for(int i=0;i<factData.length;i++){
+            ArrayList<String> tempArray = new ArrayList<>();
+            tempArray.add(factData[i][0]); //Fact title
+            tempArray.add(factData[i][1]); //Fact desc
+
+            factArray.add(tempArray);
+        }
+
+        showRandomFact();
+
         return v;
+    }
+
+    private void showRandomFact() {
+        Random random = new Random();
+        int randNo = random.nextInt(factArray.size());
+
+        ArrayList<String> facts = factArray.get(randNo);
+        mtvFactTitle.setText(facts.get(0));
+        mtvFactDesc.setText(facts.get(1));
+
+        facts.remove(0);
+        Collections.shuffle(facts);
+        factArray.remove(randNo);
+
     }
 
     public class MyTimeTask extends TimerTask{

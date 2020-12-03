@@ -44,7 +44,6 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-
     }
 
     public void linkOnClick_signUp(View view) {
