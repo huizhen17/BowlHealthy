@@ -32,11 +32,11 @@ public class AboutUs extends AppCompatActivity implements OnMapReadyCallback {
 
         Bundle mapViewBundle = null;
         if (savedInstanceState != null) {
-            mapViewBundle = savedInstanceState.getBundle(MAP_VIEW_BUNDLE_KEY);
+            mapViewBundle = savedInstanceState.getBundle(MAP_VIEW_BUNDLE_KEY); //get key(like ic no)
         }
 
-        mvMapView.onCreate(mapViewBundle);
-        mvMapView.getMapAsync(this);
+        mvMapView.onCreate(mapViewBundle);// show google the key
+        mvMapView.getMapAsync(this);//get the map from google
     }
 
     @Override
@@ -76,7 +76,7 @@ public class AboutUs extends AppCompatActivity implements OnMapReadyCallback {
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(GoogleMap googleMap) {//load the map in
         gmap = googleMap;
 
         Double latitude = 5.341604;

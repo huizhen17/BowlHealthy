@@ -22,7 +22,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCd7Vr5-nw41wge3QdNWdRC-tBCp3y--00"/>
 
-        <activity android:name=".AboutUs"></activity>
+        <activity android:name=".AboutUs"/>
         <activity android:name=".TermCondition" />
         <activity android:name=".SplashScreen">
             <intent-filter>

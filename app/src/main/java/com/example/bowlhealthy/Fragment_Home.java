@@ -108,7 +108,6 @@ public class Fragment_Home extends Fragment {
         facts.remove(0);
         Collections.shuffle(facts);
         factArray.remove(randNo);
-
     }
 
     public class MyTimeTask extends TimerTask{

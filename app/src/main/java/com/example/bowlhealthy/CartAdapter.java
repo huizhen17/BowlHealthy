@@ -78,7 +78,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         holder.mivAddCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cartModel.get(position).setCartQty(Integer.parseInt(cartModel.get(position).getCartQty())+1+"");
+                cartModel.get(position).setCartQty(Integer.parseInt(cartModel.get(position)
+                                                        .getCartQty())+1+"");
                 savedItem(position);
             }
         });
@@ -87,7 +88,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         holder.mivDeductCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cartModel.get(position).setCartQty(Integer.parseInt(cartModel.get(position).getCartQty())-1+""); //1-1 =0
+                cartModel.get(position).setCartQty(Integer.parseInt(cartModel.get(position)
+                                                        .getCartQty())-1+"");
 
                 if(Integer.parseInt(cartModel.get(position).getCartQty())<1){
                     deleteItem(position); //delete item when quantity less than one
@@ -109,8 +111,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         Function to update item into firebase
      */
     public void savedItem(int position){
-        DocumentReference getMenuDB =  db.collection("userDetail").document(userID).collection("cartDetail").document(cartModel.get(position).getCartMenu());
-        getMenuDB.update("cartQty",cartModel.get(position).getCartQty()).addOnSuccessListener(new OnSuccessListener<Void>() {
+        DocumentReference getMenuDB =  db.collection("userDetail").document(userID).
+                collection("cartDetail").document(cartModel.get(position).getCartMenu());
+        getMenuDB.update("cartQty",cartModel.get(position).getCartQty())
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 notifyDataSetChanged();
